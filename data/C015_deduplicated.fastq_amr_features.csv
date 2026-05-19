@@ -30,6 +30,7 @@ MEG_7|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_prote
 MEG_9|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,3773,MDTF,2326,Multi-metal RND efflux pumps,5113,betalactams,4121
 MEG_3992|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,3232,CPXAR,2152,Biocide and metal resistance protein,4706,Drug and biocide and metal resistance,4108
 MEG_6145|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RRSA|RequiresSNPConfirmation,2825,TETW,2109,Multi-metal ABC efflux pumps,3602,Multi-biocide resistance,4068
+MEG_4|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,2614,EVGS,1938,Zinc resistance protein,2760,Copper resistance,3551
 MEG_7183|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,2566,ACRF,1908,Rifampin-resistant beta-subunit of RNA polymerase RpoB,2714,Cationic antimicrobial peptides,3396
 MEG_3978|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,2381,TET16S,1685,Drug and biocide and metal RND efflux pumps,2711,Rifampin,2726
 MEG_3752|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTF,2326,ACRB,1677,Drug and biocide MFS efflux regulator,2632,Peroxide resistance,2710
