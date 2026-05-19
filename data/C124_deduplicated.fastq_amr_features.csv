@@ -1,0 +1,730 @@
+Statistics
+ARG_NUM_OF_READS,162359
+ARG_READ_LENGTH_MEAN,3971.407288785962
+ARG_READ_LENGTH_MEDIAN,4050
+ARG_READ_LENGTH_RANGE,"(63, 377312)"
+ARG_READ_LENGTH_STD_DEV,3530.5467382730612
+ARG_READ_LENGTH_VARIANCE,12464760.271130553
+ARG_READ_LENGTH_SKEW,56.34343945705931
+ARG_READ_LENGTH_KURTOSIS,4705.413898208748
+ARG_NO_OUTLIERS_4_STDV_NUM_OF_READS,156525
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_MEAN,3862
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_MEDIAN,4043
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_RANGE,"(663, 7437)"
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_STD_DEV,1306.4336952176334
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_VARIANCE,1706769
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_SKEW,-0.4906034347702236
+ARG_NO_OUTLIERS_4_STDV_READ_LENGTH_KURTOSIS,-0.19790298117731497
+Resistome
+MEGARes Gene Header,Num Reads,Group,Num Reads,Mechanism,Num Reads,Class,Num Reads
+MEG_4223|Drugs|Oxazolidinone|Oxazolidinone-resistant_23S_rRNA_mutation|O23S|RequiresSNPConfirmation,18419,MLS23S,92070,Macrolide-resistant 23S rRNA mutation,92070,MLS,99646
+MEG_3990|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,18150,A16S,56456,Aminoglycoside-resistant 16S ribosomal subunit protein,85981,Aminoglycosides,87740
+MEG_2|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,17873,O23S,18419,Oxazolidinone-resistant 23S rRNA mutation,18651,Oxazolidinone,18651
+MEG_8249|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,16061,RRS,11848,Tetracycline resistance ribosomal protection proteins,9279,Tetracyclines,16954
+MEG_3977|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,11927,RRSA,8630,EF-Tu inhibition,3798,Elfamycins,3798
+MEG_8680|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RRS|RequiresSNPConfirmation,11848,RRSH,7056,Tetracycline inactivation enzymes,3658,Rifampin,3600
+MEG_9|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,11563,TETQ,6111,Rifampin-resistant beta-subunit of RNA polymerase RpoB,3593,Multi-metal resistance,2970
+MEG_6145|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RRSA|RequiresSNPConfirmation,8630,TUFAB,3798,Tetracycline-resistant 16S ribosomal subunit protein,3590,Phenicol,2922
+MEG_5|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,8489,TETX,3658,23S rRNA methyltransferases,3130,Drug and biocide resistance,2190
+MEG_7|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,8433,TET16S,3590,Phenicol resistance MFS efflux pumps,2494,betalactams,1709
+MEG_3978|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,7742,RPOB,3579,MLS resistance MFS efflux pumps,2366,Cationic antimicrobial peptides,1626
+MEG_6147|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RRSH|RequiresSNPConfirmation,7056,ERMF,2697,Multi-metal RND efflux pumps,1858,Copper resistance,1599
+MEG_4|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,6704,FLOR,2494,Cationic peptide-resistant 16S ribosomal subunit protein,1572,Pleuromutilin,610
+MEG_3975|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,5588,RRSC,1896,Aminoglycoside O-nucleotidyltransferases,1456,Biocide and metal resistance,569
+MEG_3988|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,4943,CAP16S,1572,Copper resistance protein,1193,Fluoroquinolones,472
+MEG_7183|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,4725,MEFA,1427,Drug and biocide RND efflux pumps,1051,Trimethoprim,452
+MEG_8251|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,4305,TETO,1023,MLS resistance ABC efflux pumps,1008,Glycopeptides,297
+MEG_3994|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,4127,TETW,929,Class A betalactamases,764,Multi-biocide resistance,291
+MEG_3980|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,4085,ANT3-DPRIME,637,Macrolide phosphotransferases,671,Multi-drug resistance,285
+MEG_3992|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,3222,P23S,610,Pleuromutilin-resistant 23S rRNA mutation,610,Zinc resistance,253
+MEG_7238|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,3207,OXA,568,Class D betalactamases,568,Acid resistance,253
+MEG_6964|Drugs|Tetracyclines|Tetracycline-resistant_16S_ribosomal_subunit_protein|TET16S|RequiresSNPConfirmation,2638,ANT6,563,Multi-metal resistance protein,475,Arsenic resistance,231
+MEG_3982|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,2277,MSRG,533,Fluoroquinolone-resistant DNA topoisomerases,471,Drug and biocide and metal resistance,209
+MEG_6146|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RRSC|RequiresSNPConfirmation,1896,MEFF,460,Dihydrofolate reductase,452,Nucleosides,169
+MEG_1490|Drugs|Cationic_antimicrobial_peptides|Cationic_peptide-resistant_16S_ribosomal_subunit_protein|CAP16S|RequiresSNPConfirmation,1572,MEFC,445,Chloramphenicol acetyltransferases,427,Phenolic compound resistance,129
+MEG_3976|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,1357,DFRA,434,Copper resistance regulator,406,Fosfomycin,116
+MEG_2829|Drugs|MLS|23S_rRNA_methyltransferases|ERMF,1305,MPHG,431,Biocide and metal ABC efflux pumps,384,Sulfonamides,114
+MEG_3|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,1269,SILA,397,Drug and biocide SMR efflux pumps,370,Peroxide resistance,113
+MEG_3985|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,1239,TET40,393,Tetracycline resistance MFS efflux pumps,354,Aminocoumarins,109
+MEG_8252|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,1144,CATB,388,Multi-metal RND efflux regulator,311,Lipopeptides,93
+MEG_3817|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,1105,SILP,369,Drug and biocide MFS efflux pumps,307,Nickel resistance,91
+MEG_6|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,1087,MSRD,278,Aminoglycoside O-phosphotransferases,289,Sodium resistance,49
+MEG_2930|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,1065,SILB,269,Lincosamide nucleotidyltransferases,279,Fusidic acid,48
+MEG_3987|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,999,PCOA,265,Drug and biocide RND efflux regulator,265,Acetate resistance,36
+MEG_6963|Drugs|Tetracyclines|Tetracycline-resistant_16S_ribosomal_subunit_protein|TET16S|RequiresSNPConfirmation,952,PCOC,259,Arsenic resistance protein,217,Bacitracin,33
+MEG_7314|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,881,GYRA,258,Zinc resistance protein,189,Chromium resistance,22
+MEG_3991|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,836,ANT9,247,Biocide and metal resistance protein,182,Paraquat resistance,10
+MEG_8250|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,799,MDTE,244,Acid resistance protein,182,Biguanide resistance,9
+MEG_2833|Drugs|MLS|23S_rRNA_methyltransferases|ERMF,797,PCOB,244,Streptothricin acetyltransferase,169,Pactamycin,9
+MEG_7182|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,727,PCOD,242,Multi-metal resistance regulator,165,Mycobacterium tuberculosis-specific Drug,4
+MEG_6121|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,725,SILC,239,Multi-metal ABC efflux pumps,161,Mercury resistance,1
+MEG_3993|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,705,RRL,232,Multi-biocide RND efflux pump,151
+MEG_8253|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,676,TET36,213,Drug and biocide and metal RND efflux pumps,142
+MEG_8254|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,662,MDTF,204,Class C betalactamases,140
+MEG_7320|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,646,LNUC,199,Drug and biocide MFS efflux regulator,135
+MEG_2918|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,630,SILS,197,Macrolide esterases,119
+MEG_6127|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,605,FETA,194,Multi-biocide resistance regulator,115
+MEG_8443|Drugs|Pleuromutilin|Pleuromutilin-resistant_23S_rRNA_mutation|P23S|RequiresSNPConfirmation,597,FETB,190,Sulfonamide-resistant dihydropteroate synthases,114
+MEG_3984|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,589,SILF,184,VanC-type resistance protein,112
+MEG_7307|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,547,PCOR,181,Aminocoumarin-resistant DNA topoisomerases,109
+MEG_2831|Drugs|MLS|23S_rRNA_methyltransferases|ERMF,511,ACRB,175,Phenolic resistance protein,104
+MEG_8260|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRG,455,TETM,174,Class B betalactamases,98
+MEG_998|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT6,453,SAT,169,Fosfomycin target mutation,98
+MEG_3828|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFC,445,PCOS,162,VanC-type regulator,96
+MEG_1|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,434,MSRE,154,Nickel ABC efflux pumps,88
+MEG_8068|Drugs|Trimethoprim|Dihydrofolate_reductase|DFRA,433,APH6,152,Multi-drug ABC efflux pumps,86
+MEG_4045|Drugs|MLS|Macrolide_phosphotransferases|MPHG,431,TOLC,150,Mutant porin proteins,83
+MEG_6107|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,416,TET44,150,Tetracycline transcriptional repressor,73
+MEG_6499|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILA,397,TET32,142,Acid resistance regulator,71
+MEG_6131|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,390,TETT,140,Peroxide resistance stress protein,66
+MEG_7181|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,364,CUSC,133,Zinc resistance regulator,64
+MEG_3986|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,351,ERM,127,Vancomycin-resistant mutation,63
+MEG_7154|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,337,PARC,121,Drug and biocide and metal RND efflux regulator,56
+MEG_6100|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,337,ERED,119,Lipid A modification,54
+MEG_4750|Drugs|betalactams|Class_D_betalactamases|OXA,332,APH3-DPRIME,116,Daptomycin-resistant beta-subunit of RNA polymerase RpoC,49
+MEG_7312|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,322,ERMB,110,Sodium resistance protein,49
+MEG_11|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,318,MPHE,107,Penicillin binding protein,48
+MEG_7229|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,297,MPHN,104,Fusidic acid-resistant mutation,48
+MEG_2923|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,278,CUSA,101,peroxide resistance protein,47
+MEG_6500|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILB,269,CUSR,98,Acetate resistance protein,36
+MEG_5416|Metals|Copper_resistance|Copper_resistance_protein|PCOA,265,ACRF,97,Drug and biocide ABC efflux pumps,34
+MEG_5420|Metals|Copper_resistance|Copper_resistance_protein|PCOC,259,TETL,96,Undecaprenyl pyrophosphate phosphatase,33
+MEG_6991|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET40,254,RPSL,95,Colistin-resistant mutant,28
+MEG_1004|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT9,245,ACRA,93,Drug and biocide MATE efflux pumps,28
+MEG_3751|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTE,244,YJAA,84,Triclosan-resistant mutation,25
+MEG_5418|Metals|Copper_resistance|Copper_resistance_protein|PCOB,244,CUSB,82,Multi-drug RND efflux pumps,23
+MEG_7315|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,244,GYRB,80,Chromium resistance protein,22
+MEG_5422|Metals|Copper_resistance|Copper_resistance_protein|PCOD,242,EVGS,80,Fosfomycin thiol transferases,18
+MEG_8245|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFF,240,MODC,77,Multi-biocide SMR efflux pump,14
+MEG_8679|Drugs|Oxazolidinone|Oxazolidinone-resistant_23S_rRNA_mutation|RRL|RequiresSNPConfirmation,232,ERMX,76,Arsenic resistance regulator,14
+MEG_6099|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,226,PTSL,75,Daptomycin-resistant mutant,14
+MEG_8|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,226,FABV,75,VanD-type resistance protein,13
+MEG_1617|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CATB|RequiresSNPConfirmation,222,PCOE,74,Drug and biocide and metal resistance regulator,11
+MEG_8244|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFF,220,TETR,73,Paraquat resistance protein,10
+MEG_6979|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET36,213,TETBP,66,Multi-drug RND efflux regulator,10
+MEG_7316|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,212,PSTC,66,MDR mutant porin proteins,9
+MEG_6501|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILC,211,SULII,64,Aminoglycoside N-acetyltransferases,9
+MEG_6507|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILP,207,GYRBA,64,Biguanide cation efflux,9
+MEG_3752|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTF,204,RPOC,63,Pactamycin-resistant 16S ribosomal subunit protein,9
+MEG_3610|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUC,199,CUSF,63,Class C betalactamase regulator,8
+MEG_2898|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_ABC_efflux_pumps|FETA,194,ZNUA,62,Rifampin phosphotransferase,7
+MEG_7301|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,193,TETB,61,Multi-biocide ABC efflux pump,7
+MEG_915|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,188,PSTA,60,VanA-type resistance protein,6
+MEG_4074|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRD,187,ZNUC,60,VanE-type resistance protein,6
+MEG_3979|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,181,ARSBM,60,Aminoglycoside efflux pumps,5
+MEG_5424|Metals|Copper_resistance|Copper_resistance_regulator|PCOR,181,EMRB,60,Pyrazinamide-resistant mutant,4
+MEG_6504|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILF,180,CUTE,59,MDR 23S ribosomal RNA methyltransferase,4
+MEG_2899|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_ABC_efflux_pumps|FETB,176,EMRA,59,Streptogramin A O-acetyltransferase,3
+MEG_7179|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,173,ACRR,58,Defensin-resistant mutant,1
+MEG_6509|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_regulator|SILS,163,PSTS,57,Mercury resistance regulator,1
+MEG_6506|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILP,162,EMRR,55,Quinolone resistance protein Qnr,1
+MEG_5425|Metals|Copper_resistance|Copper_resistance_regulator|PCOS,162,TETG,53
+MEG_4075|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRE,154,VANSC,53
+MEG_7317|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,152,CTX,50
+MEG_1628|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CATB|RequiresSNPConfirmation,151,MNTH,50
+MEG_7217|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,135,SPM,50
+MEG_6994|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET40,134,RPOCL,49
+MEG_401|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRB,130,CFX,49
+MEG_7303|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,125,VANTC,49
+MEG_3824|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,122,CORC,49
+MEG_2754|Drugs|MLS|Macrolide_esterases|ERED,119,ZNUB,49
+MEG_6997|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET44,117,ACRE,49
+MEG_7240|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,111,FUSA,48
+MEG_7243|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,110,HDEB,48
+MEG_6106|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,105,PARE,45
+MEG_1086|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,105,OMPA,44
+MEG_4051|Drugs|MLS|Macrolide_phosphotransferases|MPHN,104,MODB,43
+MEG_6108|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,104,CPXAR,43
+MEG_6970|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET32,102,VANRC,43
+MEG_2446|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|CUSA,101,MGTA,42
+MEG_4044|Drugs|MLS|Macrolide_phosphotransferases|MPHE,99,ARSA,42
+MEG_2452|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_regulator|CUSR,98,ZRAR,41
+MEG_8678|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|RPSL|RequiresSNPConfirmation,95,MODA,41
+MEG_2801|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,94,ACRS,41
+MEG_7306|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,92,RPOS,41
+MEG_6135|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,92,ERMG,40
+MEG_4073|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRD,91,MDTC,39
+MEG_7178|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,91,SODA,39
+MEG_6097|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,89,MDTO,39
+MEG_7149|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,86,GADW,39
+MEG_7211|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,85,CRP,39
+MEG_7836|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YJAA,84,TCRB,38
+MEG_1000|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT6,84,MDTB,38
+MEG_2448|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|CUSC,84,HDEA,38
+MEG_2928|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,83,MDTP,38
+MEG_2447|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|CUSB,82,ARSCM,38
+MEG_7302|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,81,MDTN,37
+MEG_7263|Biocides|Multi-biocide_resistance|Multi-biocide_RND_efflux_pump|TOLC,80,LSAE,37
+MEG_3983|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,78,EVGA,37
+MEG_8259|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRG,78,ZRAS,36
+MEG_7161|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,77,CUEO,36
+MEG_7318|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,76,EMRK,36
+MEG_3201|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,76,LSA,35
+MEG_5819|Drugs|Fosfomycin|Fosfomycin_target_mutation|PTSL|RequiresSNPConfirmation,75,EPTA,35
+MEG_2756|Drugs|MLS|23S_rRNA_methyltransferases|ERM,75,IBPB,35
+MEG_5423|Metals|Multi-metal_resistance|Multi-metal_resistance_regulator|PCOE,74,VANXYC,34
+MEG_7159|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,74,YOGI,34
+MEG_2917|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,74,GADE,34
+MEG_7150|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,73,ERMA,33
+MEG_2878|Biocides|Phenolic_compound_resistance|Phenolic_resistance_protein|FABV,73,PSTB,33
+MEG_2870|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_regulator|EVGS,72,YDEO,33
+MEG_2860|Drugs|MLS|23S_rRNA_methyltransferases|ERMX,71,TET33,32
+MEG_7202|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETT,71,LPDT,32
+MEG_409|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRF,70,IMP,31
+MEG_8718|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,69,BACA,31
+MEG_6122|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,69,MDTH,31
+MEG_7203|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETT,69,IBPA,31
+MEG_7055|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETBP,66,ERMQ,31
+MEG_5815|Metals|Arsenic_resistance|Arsenic_resistance_protein|PSTC,66,ROBA,30
+MEG_399|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRA,66,YDEP,29
+MEG_3244|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|GYRBA|RequiresSNPConfirmation,64,VANC,29
+MEG_1019|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,64,OCH,29
+MEG_7264|Biocides|Multi-biocide_resistance|Multi-biocide_RND_efflux_pump|TOLC,63,FABI,29
+MEG_6138|Drugs|Glycopeptides|Vancomycin-resistant_mutation|RPOC|RequiresSNPConfirmation,63,PMRAR,28
+MEG_2451|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|CUSF,63,MEFE,28
+MEG_7050|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETB,61,MDTK,28
+MEG_7228|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,61,SULI,28
+MEG_5813|Metals|Arsenic_resistance|Arsenic_resistance_protein|PSTA,60,GADX,28
+MEG_7859|Metals|Zinc_resistance|Zinc_resistance_protein|ZNUC,60,BAES,28
+MEG_6096|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,59,BAER,28
+MEG_7227|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,59,PITA,27
+MEG_973|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,59,LNUA,26
+MEG_2457|Metals|Copper_resistance|Copper_resistance_protein|CUTE,59,CAT,26
+MEG_7855|Metals|Zinc_resistance|Zinc_resistance_protein|ZNUA,57,TETA,26
+MEG_2722|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|EMRA,57,NIKA,26
+MEG_3187|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,56,GADC,26
+MEG_7162|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,56,EMRY,26
+MEG_2725|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|EMRB,56,LNUP,26
+MEG_2832|Drugs|MLS|23S_rRNA_methyltransferases|ERMF,56,KPN,25
+MEG_411|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|ACRR|RequiresSNPConfirmation,55,NHAB,25
+MEG_2734|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_regulator|EMRR,55,CUER,25
+MEG_7319|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,53,ADEJ,25
+MEG_3216|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,52,FABG,25
+MEG_941|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,52,MDFA,24
+MEG_1153|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ARSBM,52,FIEF,23
+MEG_2768|Drugs|MLS|23S_rRNA_methyltransferases|ERM,52,ZNTA,23
+MEG_7304|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,50,HNS,23
+MEG_3998|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|MNTH,50,MPH,22
+MEG_6554|Drugs|betalactams|Class_B_betalactamases|SPM,50,PBP2,22
+MEG_2922|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,50,FOLP,22
+MEG_6139|Drugs|Lipopeptides|Daptomycin-resistant_beta-subunit_of_RNA_polymerase_RpoC|RPOCL|RequiresSNPConfirmation,49,NFSA,22
+MEG_6118|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,49,TCRA,22
+MEG_7858|Metals|Zinc_resistance|Zinc_resistance_protein|ZNUB,49,GADB,22
+MEG_408|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRE,49,NIKB,21
+MEG_3255|Biocides|Acid_resistance|Acid_resistance_protein|HDEB,48,APH2-DPRIME,21
+MEG_2091|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|CORC,48,SILE,21
+MEG_7186|Drugs|Tetracyclines|Tetracycline_transcriptional_repressor|TETR|RequiresSNPConfirmation,48,CORA,21
+MEG_6130|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,47,DSBC,20
+MEG_7309|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,47,DSBB,19
+MEG_7156|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,47,OXYRKP,19
+MEG_8431|Drugs|betalactams|Class_D_betalactamases|OXA,46,NIKC,19
+MEG_5816|Metals|Arsenic_resistance|Arsenic_resistance_protein|PSTS,46,MNTR,19
+MEG_824|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,45,MSBA,18
+MEG_6094|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,45,QACEDELTA1,18
+MEG_2920|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,44,ZITB,18
+MEG_8288|Drugs|betalactams|Mutant_porin_proteins|OMPA,44,FEXA,18
+MEG_949|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,44,ACRD,18
+MEG_12|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,44,LNUG,18
+MEG_3822|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,43,ZNTR,18
+MEG_2926|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,42,LPTD,18
+MEG_1144|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ARSA,42,MDTJ,17
+MEG_7095|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETL,41,MDTI,17
+MEG_7862|Metals|Zinc_resistance|Zinc_resistance_regulator|ZRAR,41,BCII,17
+MEG_7219|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,41,MDTA,17
+MEG_4002|Metals|Multi-metal_resistance|Multi-metal_ABC_efflux_pumps|MODA,41,CUSS,16
+MEG_415|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|ACRS,41,ZUPT,16
+MEG_6141|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|RPOS,41,MNTP,16
+MEG_7497|Drugs|Glycopeptides|VanC-type_regulator|VANSC,40,YGIW,16
+MEG_3749|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_pumps|MDTC,39,COMR,15
+MEG_3764|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTO,39,ACT,15
+MEG_6129|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,39,DHFR,15
+MEG_3081|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|GADW,39,GLPT,15
+MEG_2132|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CRP,39,SUGE,14
+MEG_6971|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET32,39,RCNB,14
+MEG_6652|Metals|Copper_resistance|Copper_resistance_protein|TCRB,38,OMP36,14
+MEG_3747|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_pumps|MDTB,38,ARSR,14
+MEG_3253|Biocides|Acid_resistance|Acid_resistance_protein|HDEA,38,CHAA,14
+MEG_3765|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTP,38,CLS,14
+MEG_7313|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,38,BHSA,13
+MEG_1164|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ARSCM,38,SOXRB,13
+MEG_3763|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|MDTN,37,ASR,13
+MEG_7242|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,37,VANHD,13
+MEG_3648|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|LSAE,37,RCNR,13
+MEG_2867|Biocides|Acid_resistance|Acid_resistance_regulator|EVGA,37,BCR,13
+MEG_2927|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,36,YIEF,13
+MEG_4006|Metals|Multi-metal_resistance|Multi-metal_ABC_efflux_pumps|MODB,36,CATA,13
+MEG_2440|Metals|Copper_resistance|Copper_resistance_protein|CUEO,36,GLPF,13
+MEG_4010|Metals|Multi-metal_resistance|Multi-metal_ABC_efflux_pumps|MODC,36,PBP4B,13
+MEG_3948|Metals|Multi-metal_resistance|Multi-metal_resistance_regulator|MGTA,35,SDEY,13
+MEG_7864|Metals|Multi-metal_resistance|Multi-metal_resistance_regulator|ZRAS,35,KPNO,13
+MEG_3641|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|LSA,35,OMPFB,13
+MEG_2739|Drugs|Cationic_antimicrobial_peptides|Lipid_A_modification|EPTA,35,AMPH,12
+MEG_2912|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,35,RCNA,12
+MEG_7213|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,34,NIKD,12
+MEG_3238|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRB|RequiresSNPConfirmation,34,PMRF,12
+MEG_7842|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_ABC_efflux_pumps|YOGI,34,MDTG,12
+MEG_3080|Biocides|Acid_resistance|Acid_resistance_regulator|GADE,34,AMPC,12
+MEG_6510|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_regulator|SILS,34,MARA,11
+MEG_5814|Metals|Arsenic_resistance|Arsenic_resistance_protein|PSTB,33,ARSRM,11
+MEG_4012|Metals|Multi-metal_resistance|Multi-metal_ABC_efflux_pumps|MODC,33,ADEI,11
+MEG_7094|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETL,33,RUVBM,11
+MEG_7819|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|YDEO,33,SOXS,11
+MEG_6998|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TET44,33,PAREF,11
+MEG_6540|Biocides|Peroxide_resistance|peroxide_resistance_protein|SODA,33,TEHB,10
+MEG_7153|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,33,NMPC,10
+MEG_7146|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,32,NHAA,10
+MEG_7104|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,32,LNUF,10
+MEG_7524|Drugs|Glycopeptides|VanC-type_resistance_protein|VANTC,32,NIKE,10
+MEG_3622|Biocides|Acetate_resistance|Acetate_resistance_protein|LPDT,32,VEXK,10
+MEG_2732|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|EMRK,32,OQXB,10
+MEG_6120|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,32,OPTRA,9
+MEG_3755|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|MDTH,31,ARIR,9
+MEG_1695|Drugs|betalactams|Class_A_betalactamases|CFX,31,OMPK36,9
+MEG_3287|Biocides|Peroxide_resistance|Peroxide_resistance_stress_protein|IBPA,31,CEPAB,9
+MEG_3289|Biocides|Peroxide_resistance|Peroxide_resistance_stress_protein|IBPB,31,TEHA,9
+MEG_8151|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRB|RequiresSNPConfirmation,31,YHCN,9
+MEG_2913|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,30,P16S,9
+MEG_6975|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TET33,30,ERMT,9
+MEG_6082|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_pumps|ROBA,30,ANT4-PRIME,9
+MEG_7218|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,30,AMPCR,8
+MEG_2842|Drugs|MLS|23S_rRNA_methyltransferases|ERMQ,30,ASMA,8
+MEG_3065|Drugs|Fusidic_acid|Fusidic_acid-resistant_mutation|FUSA|RequiresSNPConfirmation,30,MSRC,8
+MEG_7820|Biocides|Acid_resistance|Acid_resistance_protein|YDEP,29,ZINT,8
+MEG_8427|Drugs|betalactams|Class_D_betalactamases|OXA,29,CUTC,8
+MEG_7145|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,29,UGD,7
+MEG_2919|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,29,RPH,7
+MEG_2875|Biocides|Phenolic_compound_resistance|Phenolic_resistance_protein|FABI,29,AAC3,7
+MEG_7079|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETG,28,OMPK,7
+MEG_8634|Drugs|Lipopeptides|Colistin-resistant_mutant|PMRAR|RequiresSNPConfirmation,28,MPHB,7
+MEG_3830|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFE,28,FOSK,7
+MEG_3226|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,28,QACL,7
+MEG_3083|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|GADX,28,MEFB,6
+MEG_7164|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,28,DSBA,6
+MEG_6502|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILC,28,VCAM,6
+MEG_5255|Drugs|betalactams|Class_D_betalactamases|OXA,28,FOSA,6
+MEG_1192|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_regulator|BAER,28,GADA,6
+MEG_400|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRA,27,YODB,6
+MEG_410|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRF,27,YGJH,6
+MEG_5787|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|PITA,27,MARR,6
+MEG_3606|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUA,26,COPR,5
+MEG_3816|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,26,BEPE,5
+MEG_925|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,26,COPS,5
+MEG_7014|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETA,26,ZUR,5
+MEG_4167|Metals|Nickel_resistance|Nickel_ABC_efflux_pumps|NIKA,26,COPC,5
+MEG_939|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,26,MVRC,5
+MEG_3079|Biocides|Acid_resistance|Acid_resistance_protein|GADC,26,KDPE,5
+MEG_3759|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MATE_efflux_pumps|MDTK,26,CUTF,5
+MEG_4229|Drugs|betalactams|Class_C_betalactamases|OCH,26,COPD,5
+MEG_952|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,26,YDEI,5
+MEG_1193|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_regulator|BAES,26,RPSA,4
+MEG_7471|Drugs|Glycopeptides|VanC-type_regulator|VANRC,26,ICLR,4
+MEG_3621|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUP,26,VGAD,4
+MEG_763|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,25,CIPA,4
+MEG_3989|Drugs|MLS|Macrolide-resistant_23S_rRNA_mutation|MLS23S|RequiresSNPConfirmation,25,VANE,4
+MEG_5333|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,25,TETS,4
+MEG_2443|Metals|Copper_resistance|Copper_resistance_regulator|CUER,25,UHPT,4
+MEG_692|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ADEJ,25,MURA,4
+MEG_2873|Biocides|Phenolic_compound_resistance|Triclosan-resistant_mutation|FABG|RequiresSNPConfirmation,25,YCHH,4
+MEG_5332|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,24,VATA,3
+MEG_7226|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,24,VAN,3
+MEG_4164|Metals|Sodium_resistance|Sodium_resistance_protein|NHAB,24,SODB,3
+MEG_5208|Drugs|betalactams|Class_D_betalactamases|OXA,24,MDTM,3
+MEG_402|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRB,23,TET56,3
+MEG_2909|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|FIEF,23,FOSF,3
+MEG_7223|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,23,VANHA,3
+MEG_3737|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|MDFA,23,CUTA,2
+MEG_7853|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ZNTA,23,OMPD,2
+MEG_3271|Drugs|Multi-drug_resistance|Multi-drug_RND_efflux_pumps|HNS,23,BLAEC,2
+MEG_7191|Drugs|Tetracyclines|Tetracycline_transcriptional_repressor|TETR|RequiresSNPConfirmation,23,OMPF,2
+MEG_4027|Drugs|MLS|Macrolide_phosphotransferases|MPH,22,BAHA,2
+MEG_2835|Drugs|MLS|23S_rRNA_methyltransferases|ERMG,22,ACI,2
+MEG_5400|Drugs|betalactams|Penicillin_binding_protein|PBP2,22,VANTE,2
+MEG_7883|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ACRB|RequiresSNPConfirmation,22,CUID,2
+MEG_2736|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|EMRY,22,AAC6-PRIME,2
+MEG_4160|Metals|Chromium_resistance|Chromium_resistance_protein|NFSA,22,RAMA,2
+MEG_6651|Metals|Copper_resistance|Copper_resistance_protein|TCRA,22,FOSB,1
+MEG_3078|Biocides|Acid_resistance|Acid_resistance_protein|GADB,22,TETH,1
+MEG_7077|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETG,21,DFRG,1
+MEG_4168|Metals|Nickel_resistance|Nickel_ABC_efflux_pumps|NIKB,21,FOSE,1
+MEG_6503|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILE,21,TET39,1
+MEG_7305|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,21,YKKCL,1
+MEG_2916|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,21,MERR2,1
+MEG_6123|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,21,ARSB,1
+MEG_3513|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|KPN,20,OMP37,1
+MEG_6113|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,20,SMDA,1
+MEG_2692|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|DSBC,19,QNRA,1
+MEG_916|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,19
+MEG_5321|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|OXYRKP,19
+MEG_4170|Metals|Nickel_resistance|Nickel_ABC_efflux_pumps|NIKC,19
+MEG_7184|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,19
+MEG_2955|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|FOLP|RequiresSNPConfirmation,19
+MEG_4000|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|MNTR,19
+MEG_7126|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,19
+MEG_4425|Drugs|betalactams|Class_D_betalactamases|OXA,19
+MEG_2925|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,19
+MEG_2785|Drugs|MLS|23S_rRNA_methyltransferases|ERMA,19
+MEG_2921|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,19
+MEG_4061|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|MSBA,18
+MEG_1549|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CAT,18
+MEG_7222|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,18
+MEG_8100|Drugs|Fusidic_acid|Fusidic_acid-resistant_mutation|FUSA|RequiresSNPConfirmation,18
+MEG_8717|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,18
+MEG_7851|Metals|Zinc_resistance|Zinc_resistance_protein|ZITB,18
+MEG_3620|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUG,18
+MEG_7854|Metals|Zinc_resistance|Zinc_resistance_regulator|ZNTR,18
+MEG_1190|Drugs|Bacitracin|Undecaprenyl_pyrophosphate_phosphatase|BACA,18
+MEG_2689|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|DSBB,18
+MEG_8232|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|LPTD,18
+MEG_4997|Drugs|betalactams|Class_D_betalactamases|OXA,18
+MEG_6115|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,18
+MEG_3757|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|MDTJ,17
+MEG_3756|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|MDTI,17
+MEG_1203|Drugs|betalactams|Class_B_betalactamases|BCII,17
+MEG_919|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,17
+MEG_7472|Drugs|Glycopeptides|VanC-type_regulator|VANRC,17
+MEG_2087|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|CORA,17
+MEG_7212|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,17
+MEG_7166|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,17
+MEG_3814|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,17
+MEG_3746|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_pumps|MDTA,17
+MEG_2453|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_regulator|CUSS,16
+MEG_2830|Drugs|MLS|23S_rRNA_methyltransferases|ERMF,16
+MEG_7865|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|ZUPT,16
+MEG_2430|Drugs|betalactams|Class_A_betalactamases|CTX,16
+MEG_2121|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,16
+MEG_3999|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|MNTP,16
+MEG_7831|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YGIW,16
+MEG_10|Drugs|Aminoglycosides|Aminoglycoside-resistant_16S_ribosomal_subunit_protein|A16S|RequiresSNPConfirmation,16
+MEG_8445|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,16
+MEG_2017|Metals|Copper_resistance|Copper_resistance_regulator|COMR,15
+MEG_988|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT6,15
+MEG_2834|Drugs|MLS|23S_rRNA_methyltransferases|ERMG,15
+MEG_7224|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,15
+MEG_5374|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,15
+MEG_3144|Drugs|Fosfomycin|Fosfomycin_target_mutation|GLPT|RequiresSNPConfirmation,15
+MEG_3826|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,15
+MEG_1057|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,15
+MEG_7160|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,14
+MEG_6132|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,14
+MEG_6049|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|RCNB,14
+MEG_407|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_RND_efflux_pumps|ACRD,14
+MEG_2900|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_ABC_efflux_pumps|FETB,14
+MEG_1173|Metals|Arsenic_resistance|Arsenic_resistance_regulator|ARSR,14
+MEG_5365|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,14
+MEG_1701|Metals|Sodium_resistance|Sodium_resistance_protein|CHAA,14
+MEG_2378|Drugs|betalactams|Class_A_betalactamases|CTX,14
+MEG_1732|Drugs|Lipopeptides|Daptomycin-resistant_mutant|CLS|RequiresSNPConfirmation,14
+MEG_3825|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,14
+MEG_2911|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,14
+MEG_5363|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,14
+MEG_5323|Drugs|Pleuromutilin|Pleuromutilin-resistant_23S_rRNA_mutation|P23S|RequiresSNPConfirmation,13
+MEG_1231|Metals|Copper_resistance|Copper_resistance_regulator|BHSA,13
+MEG_1189|Drugs|Bacitracin|Undecaprenyl_pyrophosphate_phosphatase|BACA,13
+MEG_1181|Biocides|Acid_resistance|Acid_resistance_protein|ASR,13
+MEG_7429|Drugs|Glycopeptides|VanD-type_resistance_protein|VANHD,13
+MEG_7112|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,13
+MEG_7220|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,13
+MEG_6050|Metals|Multi-metal_resistance|Multi-metal_resistance_regulator|RCNR,13
+MEG_1084|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,13
+MEG_7835|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YIEF,13
+MEG_5409|Drugs|betalactams|Penicillin_binding_protein|PBP4B,13
+MEG_6175|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|SDEY,13
+MEG_3516|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|KPNO,13
+MEG_1012|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH2-DPRIME,13
+MEG_2905|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|FEXA,13
+MEG_4289|Drugs|betalactams|Mutant_porin_proteins|OMPFB|RequiresSNPConfirmation,13
+MEG_6048|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|RCNA,12
+MEG_1097|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,12
+MEG_4171|Metals|Nickel_resistance|Nickel_ABC_efflux_pumps|NIKD,12
+MEG_8150|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRB|RequiresSNPConfirmation,12
+MEG_2914|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,12
+MEG_6549|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|SOXRB,12
+MEG_3815|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,12
+MEG_7583|Drugs|Glycopeptides|VanC-type_resistance_protein|VANXYC,12
+MEG_5342|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,12
+MEG_5801|Drugs|Cationic_antimicrobial_peptides|Lipid_A_modification|PMRF,12
+MEG_5335|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,12
+MEG_3141|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|GLPF,12
+MEG_7180|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETQ,12
+MEG_2618|Drugs|Trimethoprim|Dihydrofolate_reductase|DHFR|RequiresSNPConfirmation,12
+MEG_728|Drugs|betalactams|Class_C_betalactamases|AMPC,12
+MEG_3662|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|MARA,11
+MEG_2786|Drugs|MLS|23S_rRNA_methyltransferases|ERMA,11
+MEG_729|Drugs|betalactams|Penicillin_binding_protein|AMPH,11
+MEG_1176|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ARSRM,11
+MEG_7502|Drugs|Glycopeptides|VanC-type_regulator|VANSC,11
+MEG_6154|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|RUVBM,11
+MEG_6551|Multi-compound|Drug_and_biocide_and_metal_resistance|Drug_and_biocide_and_metal_resistance_regulator|SOXS,11
+MEG_8287|Drugs|betalactams|Mutant_porin_proteins|OMP36|RequiresSNPConfirmation,11
+MEG_3819|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,11
+MEG_3809|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,11
+MEG_3753|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|MDTG,11
+MEG_7584|Drugs|Glycopeptides|VanC-type_resistance_protein|VANXYC,11
+MEG_5394|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PAREF|RequiresSNPConfirmation,11
+MEG_5817|Metals|Arsenic_resistance|Arsenic_resistance_protein|PSTS,11
+MEG_6656|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|TEHB,10
+MEG_4203|Biocides|Paraquat_resistance|Paraquat_resistance_protein|NMPC,10
+MEG_4162|Metals|Sodium_resistance|Sodium_resistance_protein|NHAA,10
+MEG_5829|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|QACEDELTA1,10
+MEG_2122|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,10
+MEG_3813|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,10
+MEG_1698|Drugs|betalactams|Class_A_betalactamases|CFX,10
+MEG_4424|Drugs|betalactams|Class_D_betalactamases|OXA,10
+MEG_7381|Drugs|Glycopeptides|VanC-type_resistance_protein|VANC,10
+MEG_4173|Metals|Nickel_resistance|Nickel_ABC_efflux_pumps|NIKE,10
+MEG_7675|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|VEXK,10
+MEG_7310|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,10
+MEG_6111|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,9
+MEG_1054|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,9
+MEG_1107|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|ARIR,9
+MEG_8290|Drugs|betalactams|Mutant_porin_proteins|OMPK36|RequiresSNPConfirmation,9
+MEG_3818|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,9
+MEG_1652|Biocides|Biguanide_resistance|Biguanide_cation_efflux|CEPAB,9
+MEG_4808|Drugs|betalactams|Class_D_betalactamases|OXA,9
+MEG_6655|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|TEHA,9
+MEG_7215|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,9
+MEG_7833|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YHCN,9
+MEG_5322|Drugs|Pactamycin|Pactamycin-resistant_16S_ribosomal_subunit_protein|P16S|RequiresSNPConfirmation,9
+MEG_6577|Biocides|Multi-biocide_resistance|Multi-biocide_SMR_efflux_pump|SUGE,9
+MEG_6627|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|SULII,8
+MEG_964|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,8
+MEG_7974|Drugs|betalactams|Class_C_betalactamase_regulator|AMPCR|RequiresSNPConfirmation,8
+MEG_791|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,8
+MEG_1180|Drugs|Multi-drug_resistance|Multi-drug_RND_efflux_regulator|ASMA,8
+MEG_4072|Drugs|MLS|MLS_resistance_ABC_efflux_pumps|MSRC,8
+MEG_1058|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,8
+MEG_7376|Drugs|Glycopeptides|VanC-type_resistance_protein|VANC,8
+MEG_4998|Drugs|betalactams|Class_D_betalactamases|OXA,8
+MEG_3810|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,8
+MEG_7849|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ZINT,8
+MEG_3183|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,8
+MEG_2115|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,8
+MEG_6112|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,8
+MEG_1095|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,8
+MEG_2456|Metals|Copper_resistance|Copper_resistance_protein|CUTC,8
+MEG_6103|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,8
+MEG_1554|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CAT,8
+MEG_1151|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|ARSBM,8
+MEG_978|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT4-PRIME,8
+MEG_7328|Drugs|Cationic_antimicrobial_peptides|Lipid_A_modification|UGD,7
+MEG_1045|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,7
+MEG_7321|Drugs|Elfamycins|EF-Tu_inhibition|TUFAB|RequiresSNPConfirmation,7
+MEG_4042|Drugs|MLS|Macrolide_phosphotransferases|MPHE,7
+MEG_1015|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH2-DPRIME,7
+MEG_7267|Biocides|Multi-biocide_resistance|Multi-biocide_RND_efflux_pump|TOLC,7
+MEG_4004|Metals|Multi-metal_resistance|Multi-metal_ABC_efflux_pumps|MODB,7
+MEG_4317|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|OPTRA,7
+MEG_497|Drugs|betalactams|Class_C_betalactamases|ACT,7
+MEG_3947|Metals|Multi-metal_resistance|Multi-metal_resistance_regulator|MGTA,7
+MEG_5382|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,7
+MEG_8289|Drugs|Multi-drug_resistance|MDR_mutant_porin_proteins|OMPK|RequiresSNPConfirmation,7
+MEG_4033|Drugs|MLS|Macrolide_phosphotransferases|MPHB,7
+MEG_2924|Drugs|Phenicol|Phenicol_resistance_MFS_efflux_pumps|FLOR,7
+MEG_997|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT6,7
+MEG_1085|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,7
+MEG_3023|Drugs|Fosfomycin|Fosfomycin_thiol_transferases|FOSK,7
+MEG_5060|Drugs|betalactams|Class_D_betalactamases|OXA,7
+MEG_1566|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CATA,7
+MEG_961|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,6
+MEG_3827|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFB,6
+MEG_8448|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,6
+MEG_2688|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|DSBA,6
+MEG_3805|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,6
+MEG_6087|Drugs|Rifampin|Rifampin_phosphotransferase|RPH,6
+MEG_846|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,6
+MEG_7635|Biocides|Multi-biocide_resistance|Multi-biocide_ABC_efflux_pump|VCAM,6
+MEG_8089|Drugs|Fosfomycin|Fosfomycin_thiol_transferases|FOSA,6
+MEG_972|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,6
+MEG_5350|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,6
+MEG_6542|Biocides|Peroxide_resistance|peroxide_resistance_protein|SODA,6
+MEG_7109|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,6
+MEG_1210|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|BCR,6
+MEG_3231|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,6
+MEG_7244|Drugs|Tetracyclines|Tetracycline_inactivation_enzymes|TETX,6
+MEG_3193|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,6
+MEG_7151|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,6
+MEG_3076|Biocides|Acid_resistance|Acid_resistance_protein|GADA,6
+MEG_7841|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YODB,6
+MEG_7832|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|YGJH,6
+MEG_6630|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|SULII,6
+MEG_3189|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,6
+MEG_2796|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,6
+MEG_3663|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|MARR,6
+MEG_4359|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|OQXB,6
+MEG_7225|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,5
+MEG_7856|Metals|Zinc_resistance|Zinc_resistance_protein|ZNUA,5
+MEG_2074|Metals|Copper_resistance|Copper_resistance_regulator|COPR,5
+MEG_6575|Biocides|Multi-biocide_resistance|Multi-biocide_SMR_efflux_pump|SUGE,5
+MEG_1225|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|BEPE,5
+MEG_4803|Drugs|betalactams|Class_D_betalactamases|OXA,5
+MEG_969|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,5
+MEG_2078|Metals|Copper_resistance|Copper_resistance_regulator|COPS,5
+MEG_689|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ADEI,5
+MEG_7233|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,5
+MEG_6133|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,5
+MEG_7152|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETO,5
+MEG_1053|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH3-DPRIME,5
+MEG_3512|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|KPN,5
+MEG_823|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,5
+MEG_6124|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,5
+MEG_2049|Metals|Copper_resistance|Copper_resistance_protein|COPC,5
+MEG_4103|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|MVRC,5
+MEG_3448|Drugs|Aminoglycosides|Aminoglycoside_efflux_pumps|KDPE,5
+MEG_2458|Metals|Copper_resistance|Copper_resistance_protein|CUTF,5
+MEG_7097|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETL,5
+MEG_2055|Metals|Copper_resistance|Copper_resistance_protein|COPD,5
+MEG_7818|Biocides|Peroxide_resistance|peroxide_resistance_protein|YDEI,5
+MEG_8161|Drugs|betalactams|Class_B_betalactamases|IMP,4
+MEG_7121|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,4
+MEG_954|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,4
+MEG_4830|Drugs|betalactams|Class_D_betalactamases|OXA,4
+MEG_7142|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,4
+MEG_6142|Drugs|Mycobacterium_tuberculosis-specific_Drug|Pyrazinamide-resistant_mutant|RPSA|RequiresSNPConfirmation,4
+MEG_3291|Biocides|Acetate_resistance|Acetate_resistance_protein|ICLR,4
+MEG_7689|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|VGAD,4
+MEG_2120|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,4
+MEG_7867|Metals|Zinc_resistance|Zinc_resistance_regulator|ZUR,4
+MEG_3219|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,4
+MEG_1723|Drugs|Multi-drug_resistance|MDR_23S_ribosomal_RNA_methyltransferase|CIPA,4
+MEG_7390|Drugs|Glycopeptides|VanE-type_resistance_protein|VANE,4
+MEG_1209|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|BCR,4
+MEG_3616|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUF,4
+MEG_3288|Biocides|Peroxide_resistance|Peroxide_resistance_stress_protein|IBPB,4
+MEG_2846|Drugs|MLS|23S_rRNA_methyltransferases|ERMT,4
+MEG_4849|Drugs|betalactams|Class_D_betalactamases|OXA,4
+MEG_2848|Drugs|MLS|23S_rRNA_methyltransferases|ERMT,4
+MEG_6505|Metals|Multi-metal_resistance|Multi-metal_RND_efflux_pumps|SILF,4
+MEG_5393|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,4
+MEG_6090|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,4
+MEG_7330|Drugs|Fosfomycin|Fosfomycin_target_mutation|UHPT|RequiresSNPConfirmation,4
+MEG_1091|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,4
+MEG_4095|Drugs|Fosfomycin|Fosfomycin_target_mutation|MURA|RequiresSNPConfirmation,4
+MEG_7813|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|YCHH,4
+MEG_5831|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|QACEDELTA1,4
+MEG_795|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_785|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_7620|Drugs|MLS|Streptogramin_A_O-acetyltransferase|VATA,3
+MEG_7333|Drugs|Glycopeptides|VanA-type_resistance_protein|VAN|RequiresSNPConfirmation,3
+MEG_7230|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETW,3
+MEG_768|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_20|Drugs|Aminoglycosides|Aminoglycoside_N-acetyltransferases|AAC3,3
+MEG_2903|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|FEXA,3
+MEG_943|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_8389|Drugs|betalactams|Class_D_betalactamases|OXA,3
+MEG_796|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_6545|Biocides|Peroxide_resistance|peroxide_resistance_protein|SODB,3
+MEG_968|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_2857|Drugs|MLS|23S_rRNA_methyltransferases|ERMX,3
+MEG_495|Drugs|betalactams|Class_C_betalactamases|ACT,3
+MEG_893|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_7078|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETG,3
+MEG_1686|Drugs|betalactams|Class_A_betalactamases|CFX,3
+MEG_6105|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,3
+MEG_3357|Drugs|betalactams|Class_B_betalactamases|IMP,3
+MEG_414|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|ACRR|RequiresSNPConfirmation,3
+MEG_7115|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,3
+MEG_2836|Drugs|MLS|23S_rRNA_methyltransferases|ERMG,3
+MEG_7009|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TET56,3
+MEG_883|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,3
+MEG_7199|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETS,3
+MEG_3021|Drugs|Fosfomycin|Fosfomycin_thiol_transferases|FOSF,3
+MEG_3242|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRB|RequiresSNPConfirmation,3
+MEG_7105|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,3
+MEG_2118|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,3
+MEG_5852|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_SMR_efflux_pumps|QACL,3
+MEG_7408|Drugs|Glycopeptides|VanA-type_resistance_protein|VANHA,3
+MEG_5353|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,3
+MEG_2787|Drugs|MLS|23S_rRNA_methyltransferases|ERMA,2
+MEG_2454|Metals|Copper_resistance|Copper_resistance_protein|CUTA,2
+MEG_4285|Drugs|betalactams|Mutant_porin_proteins|OMPD,2
+MEG_3615|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUF,2
+MEG_1689|Drugs|betalactams|Class_A_betalactamases|CFX,2
+MEG_2793|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,2
+MEG_6973|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TET33,2
+MEG_1279|Drugs|betalactams|Class_C_betalactamases|BLAEC,2
+MEG_3823|Drugs|MLS|MLS_resistance_MFS_efflux_pumps|MEFA,2
+MEG_4414|Drugs|betalactams|Class_D_betalactamases|OXA,2
+MEG_4287|Drugs|Multi-drug_resistance|MDR_mutant_porin_proteins|OMPF|RequiresSNPConfirmation,2
+MEG_7127|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,2
+MEG_1196|Drugs|Bacitracin|Undecaprenyl_pyrophosphate_phosphatase|BAHA,2
+MEG_2972|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|FOLP|RequiresSNPConfirmation,2
+MEG_1096|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,2
+MEG_395|Drugs|betalactams|Class_A_betalactamases|ACI,2
+MEG_3205|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,2
+MEG_8417|Drugs|betalactams|Class_D_betalactamases|OXA,2
+MEG_2116|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_regulator|CPXAR,2
+MEG_7530|Drugs|Glycopeptides|VanE-type_resistance_protein|VANTE,2
+MEG_28|Drugs|Aminoglycosides|Aminoglycoside_N-acetyltransferases|AAC3,2
+MEG_2445|Multi-compound|Biocide_and_metal_resistance|Biocide_and_metal_resistance_protein|CUID,2
+MEG_2794|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,2
+MEG_3617|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUF,2
+MEG_1003|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT9,2
+MEG_2637|Drugs|Trimethoprim|Dihydrofolate_reductase|DHFR|RequiresSNPConfirmation,2
+MEG_1582|Drugs|Phenicol|Chloramphenicol_acetyltransferases|CATA,2
+MEG_7135|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,2
+MEG_4279|Drugs|betalactams|Mutant_porin_proteins|OMP36|RequiresSNPConfirmation,2
+MEG_2879|Biocides|Phenolic_compound_resistance|Phenolic_resistance_protein|FABV,2
+MEG_3758|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MATE_efflux_pumps|MDTK,2
+MEG_8148|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,2
+MEG_6114|Drugs|Rifampin|Rifampin-resistant_beta-subunit_of_RNA_polymerase_RpoB|RPOB|RequiresSNPConfirmation,2
+MEG_5334|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|PARC|RequiresSNPConfirmation,2
+MEG_7500|Drugs|Glycopeptides|VanC-type_regulator|VANSC,2
+MEG_3232|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,2
+MEG_3215|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,2
+MEG_888|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,2
+MEG_4230|Drugs|betalactams|Class_C_betalactamases|OCH,2
+MEG_688|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_RND_efflux_pumps|ADEI,2
+MEG_3761|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|MDTM,2
+MEG_786|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,2
+MEG_921|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,2
+MEG_67|Drugs|Aminoglycosides|Aminoglycoside_N-acetyltransferases|AAC3,2
+MEG_6044|Drugs|Multi-drug_resistance|Multi-drug_RND_efflux_regulator|RAMA,2
+MEG_895|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_5373|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,1
+MEG_5371|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,1
+MEG_3010|Drugs|Fosfomycin|Fosfomycin_thiol_transferases|FOSB,1
+MEG_5389|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,1
+MEG_7082|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TETH,1
+MEG_804|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_1696|Drugs|betalactams|Class_A_betalactamases|CFX,1
+MEG_2579|Drugs|Trimethoprim|Dihydrofolate_reductase|DFRG,1
+MEG_6166|Drugs|Nucleosides|Streptothricin_acetyltransferase|SAT,1
+MEG_7195|Drugs|Tetracyclines|Tetracycline_transcriptional_repressor|TETR|RequiresSNPConfirmation,1
+MEG_2690|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|DSBB,1
+MEG_6550|Biocides|Multi-biocide_resistance|Multi-biocide_resistance_regulator|SOXRB,1
+MEG_2799|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,1
+MEG_3019|Drugs|Fosfomycin|Fosfomycin_thiol_transferases|FOSE,1
+MEG_798|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_951|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_6615|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|SULI,1
+MEG_6987|Drugs|Tetracyclines|Tetracycline_resistance_MFS_efflux_pumps|TET39,1
+MEG_7840|Drugs|Lipopeptides|Defensin-resistant_mutant|YKKCL|RequiresSNPConfirmation,1
+MEG_2090|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|CORC,1
+MEG_2967|Drugs|Sulfonamides|Sulfonamide-resistant_dihydropteroate_synthases|FOLP|RequiresSNPConfirmation,1
+MEG_1087|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH6,1
+MEG_3762|Multi-compound|Drug_and_biocide_resistance|Drug_and_biocide_MFS_efflux_pumps|MDTM,1
+MEG_2691|Metals|Multi-metal_resistance|Multi-metal_resistance_protein|DSBC,1
+MEG_4043|Drugs|MLS|Macrolide_phosphotransferases|MPHE,1
+MEG_3887|Metals|Mercury_resistance|Mercury_resistance_regulator|MERR2,1
+MEG_847|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_1145|Metals|Arsenic_resistance|Arsenic_resistance_protein|ARSB,1
+MEG_2797|Drugs|MLS|23S_rRNA_methyltransferases|ERMB,1
+MEG_3234|Drugs|Fluoroquinolones|Fluoroquinolone-resistant_DNA_topoisomerases|GYRA|RequiresSNPConfirmation,1
+MEG_730|Drugs|betalactams|Penicillin_binding_protein|AMPH,1
+MEG_3619|Drugs|MLS|Lincosamide_nucleotidyltransferases|LNUF,1
+MEG_4305|Drugs|Multi-drug_resistance|Multi-drug_ABC_efflux_pumps|OPTRA,1
+MEG_7134|Drugs|Tetracyclines|Tetracycline_resistance_ribosomal_protection_proteins|TETM,1
+MEG_1016|Drugs|Aminoglycosides|Aminoglycoside_O-phosphotransferases|APH2-DPRIME,1
+MEG_3369|Drugs|betalactams|Class_B_betalactamases|IMP,1
+MEG_4163|Metals|Sodium_resistance|Sodium_resistance_protein|NHAB,1
+MEG_4283|Drugs|betalactams|Mutant_porin_proteins|OMP37,1
+MEG_6519|Biocides|Multi-biocide_resistance|Multi-biocide_ABC_efflux_pump|SMDA,1
+MEG_5386|Drugs|Aminocoumarins|Aminocoumarin-resistant_DNA_topoisomerases|PARE|RequiresSNPConfirmation,1
+MEG_887|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_848|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_816|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_7378|Drugs|Glycopeptides|VanC-type_resistance_protein|VANC,1
+MEG_152|Drugs|Aminoglycosides|Aminoglycoside_N-acetyltransferases|AAC6-PRIME,1
+MEG_963|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
+MEG_5869|Drugs|Fluoroquinolones|Quinolone_resistance_protein_Qnr|QNRA,1
+MEG_805|Drugs|Aminoglycosides|Aminoglycoside_O-nucleotidyltransferases|ANT3-DPRIME,1
