@@ -3,7 +3,6 @@
 # Input: data/*_amr_features.csv and data/Study Design Mengchan.xlsx
 # Output: processed abundance tables for downstream analysis
 
-
 # Load packages
 library(tidyverse)
 library(readxl)
@@ -135,5 +134,6 @@ resistance_split$sample_type <- ifelse(
 
 # Check sample type
 table(resistance_split$sample_type)
+
 # Check updated table
 head(resistance_split)
