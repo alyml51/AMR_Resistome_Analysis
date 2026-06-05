@@ -11,12 +11,13 @@ library(readxl)
 project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
 
 # Define project folders
+raw_data_dir <- "E:/A-4137/Mengchan/Data"
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
 
 # List all AMR feature files
 files <- list.files(
-  path = data_dir,
+  path = raw_data_dir,
   pattern = "_amr_features\\.csv$",
   full.names = TRUE
 )
@@ -34,7 +35,13 @@ length(sample_names)
 # Read all AMR feature files and keep sample names
 amr_list <- files %>%
   set_names(sample_names) %>%
-  map(~ read_csv(.x, show_col_types = FALSE))
+  map(~ read_csv(
+    .x, 
+    show_col_types = FALSE,
+    col_types = cols(
+      .default = col_character()
+      )
+    ))
 
 # Clean all AMR tables
 cleaned_list <- amr_list %>%
@@ -62,6 +69,13 @@ resistance_split <- separate(
   fill = "right"
 )
 
+# Extract numeric abundance from value column
+resistance_split <- resistance_split %>%
+  mutate(abundance = as.numeric(str_extract(value, "^[0-9.]+")))
+
+# Check abundance extraction
+sum(is.na(resistance_split$abundance))
+
 # Check number of resistance classes
 length(unique(resistance_split$class))
 
@@ -77,7 +91,7 @@ table(resistance_split$sample_type)
 
 # Read and join study metadata
 metadata <- read_excel(
-  file.path(data_dir, "Study Design Mengchan.xlsx")
+  file.path(raw_data_dir, "Study Design Mengchan.xlsx")
   )
 
 # Remove duplicated samples from metadata
@@ -97,4 +111,3 @@ write.csv(
 
 # Check processed file was saved
 file.exists(file.path(data_dir, "resistance_split_processed.csv"))
-
