@@ -102,6 +102,49 @@ metadata <- metadata %>%
 resistance_split <- resistance_split %>%
   left_join(metadata, by = "sample_name")
 
+# Create broader resistance class groups
+resistance_split$class_group <- case_when(
+  
+  # Major antibiotic resistance classes
+  resistance_split$class == "betalactams" ~ "Beta-lactams",
+  resistance_split$class == "Aminoglycosides" ~ "Aminoglycosides",
+  resistance_split$class == "Tetracyclines" ~ "Tetracyclines",
+  resistance_split$class == "MLS" ~ "MLS",
+  resistance_split$class %in% c("Sulfonamides", "Trimethoprim") ~ "Sulfonamides/Trimethoprim",
+  resistance_split$class == "Fluoroquinolones" ~ "Fluoroquinolones",
+  resistance_split$class == "Phenicol" ~ "Phenicol",
+  resistance_split$class == "Glycopeptides" ~ "Glycopeptides",
+  resistance_split$class == "Rifampin" ~ "Rifampin",
+  resistance_split$class == "Multi-drug_resistance" ~ "Multi-drug resistance",
+  
+  # Metal resistance
+  resistance_split$class %in% c(
+    "Copper_resistance", "Zinc_resistance", "Mercury_resistance",
+    "Nickel_resistance", "Chromium_resistance", "Aluminum_resistance",
+    "Iron_resistance", "Tellurium_resistance", "Multi-metal_resistance"
+  ) ~ "Metal resistance",
+  
+  # Biocide/disinfectant resistance
+  resistance_split$class %in% c(
+    "Biguanide_resistance",
+    "Biocide_and_metal_resistance",
+    "Drug_and_biocide_resistance",
+    "Drug_and_biocide_and_metal_resistance",
+    "Multi-biocide_resistance",
+    "Peroxide_resistance",
+    "Phenolic_compound_resistance",
+    "Quaternary_Ammonium_Compounds_(QACs)_resistance"
+  ) ~ "Biocide resistance",
+  
+  # Other Low-abundance or environmental classes
+  TRUE ~ "Other"
+)
+
+# Check the new class groups
+sort(unique(resistance_split$class_group))
+table(resistance_split$class_group)
+sum(is.na(resistance_split$class_group))
+
 # Save processed table for later scripts
 write.csv(
   resistance_split,
@@ -111,3 +154,4 @@ write.csv(
 
 # Check processed file was saved
 file.exists(file.path(data_dir, "resistance_split_processed.csv"))
+
