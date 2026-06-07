@@ -1,7 +1,13 @@
 # 01_merge_data.R
-# Purpose: Import TELCoMB AMR feature files and study metadata
-# Input: data/*_amr_features.csv and data/Study Design Mengchan.xlsx
+# Purpose: Import TELCoMB AMR feature files, metadata and create grouped resistance classes
+# Input: sample-level AMR feature tables and study metadata
 # Output: data/resistance_split_processed.csv for downstream analysis
+
+# Raw MEGARes resistance annotations are merged with study metadata.
+# Resistance classes are grouped into 13 broader categories for downstream analysis.
+# Major antibiotic classes are kept separate.
+# Metal and biocide resistance is grouped into a single category. 
+# Low-abundance or environmentally-specific classes are grouped as "Other".
 
 # Load packages
 library(tidyverse)
@@ -154,4 +160,3 @@ write.csv(
 
 # Check processed file was saved
 file.exists(file.path(data_dir, "resistance_split_processed.csv"))
-

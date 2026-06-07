@@ -1,11 +1,11 @@
 # 02_resistance_class_plots.R
-# Purpose: Group resistance classes into broad categories and plot resistome composition
+# Purpose: Plot resistance class composition across farm samples
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: resistance class composition plots for downstream analysis
+# Output: stacked bar plots of grouped resistance class composition
 
-# The main analysis focuses on major antibiotic resistance classes.
-# Metal and biocide resistance are kept as separate broader categories.
-# Low-abundance or environmentally-specific classes are grouped as Other.
+# The processed data already contains grouped resistance class information.
+# created in 01_merge_data.R. This script uses those groups to visualise.
+# relative abundance patterns across farm samples.
 
 # Load packages
 library(dplyr)
@@ -26,45 +26,8 @@ resistance_split <- read.csv(
 # Check input colums
 colnames(resistance_split)
 
-# Create broader resistance class groups
-resistance_split$class_group <- case_when(
-  
-  # Major antibiotic resistance classes
-  resistance_split$class == "betalactams" ~ "Beta-lactams",
-  resistance_split$class == "Aminoglycosides" ~ "Aminoglycosides",
-  resistance_split$class == "Tetracyclines" ~ "Tetracyclines",
-  resistance_split$class == "MLS" ~ "MLS",
-  resistance_split$class %in% c("Sulfonamides", "Trimethoprim") ~ "Sulfonamides/Trimethoprim",
-  resistance_split$class == "Fluoroquinolones" ~ "Fluoroquinolones",
-  resistance_split$class == "Phenicol" ~ "Phenicol",
-  resistance_split$class == "Glycopeptides" ~ "Glycopeptides",
-  resistance_split$class == "Rifampin" ~ "Rifampin",
-  resistance_split$class == "Multi-drug_resistance" ~ "Multi-drug resistance",
 
-  # Metal resistance
-  resistance_split$class %in% c(
-    "Copper_resistance", "Zinc_resistance", "Mercury_resistance",
-    "Nickel_resistance", "Chromium_resistance", "Aluminum_resistance",
-    "Iron_resistance", "Tellurium_resistance", "Multi-metal_resistance"
-  ) ~ "Metal resistance",
-  
-  # Biocide/disinfectant resistance
-   resistance_split$class %in% c(
-    "Biguanide_resistance",
-    "Biocide_and_metal_resistance",
-    "Drug_and_biocide_resistance",
-    "Drug_and_biocide_and_metal_resistance",
-    "Multi-biocide_resistance",
-    "Peroxide_resistance",
-    "Phenolic_compound_resistance",
-    "Quaternary_Ammonium_Compounds_(QACs)_resistance"
-  ) ~ "Biocide resistance",
-  
-  # Other Low-abundance or environmental classes
-  TRUE ~ "Other"
-)
-
-# Check the new class groups
+# Check grouped resistance classes
 sort(unique(resistance_split$class_group))
 table(resistance_split$class_group)
 sum(is.na(resistance_split$class_group))
@@ -194,4 +157,3 @@ file.exists(
     "resistance_class_composition.png"
   )
 )
-
