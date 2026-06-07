@@ -1,89 +1,59 @@
-# 03_pca_analysis.R
-# Purpose: PCA analysis of resistance profiles
+# 03_pcoa_analysis.R
+# Purpose: Explore resistome composition differences among farm samples using PCoA
+# Input: data/resistance_split_processed.csv from 01_merge_data.R
+# Output: PCoA plots for downstream beta diversity analysis
 
+# This analysis follows a microbiome ecology framework.
+# Bray-Curtis dissimilarity is calculated using relative abundance values of grouped
+# Resistance classes to assess differences in resistome composition among farm samples
+# PCoA is then used to visualise overall variation in resistome composition
+
+# Load packages
 library(tidyverse)
+library(vegan)
 
 # Set working directory
 project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
-setwd(project_dir)
 
-# Load merged dataset
-source("scripts/01_merge_data.R")
+# Define project folders
+data_dir <- file.path(project_dir, "data")
+figures_dir <- file.path(project_dir, "figures")
 
-# Create abundance matrix
-pca_data <- resistance_split %>%
-  filter(sample_type == "farm_sample") %>%
-  group_by(sample_name, class) %>%
-  summarise(
-    abundance = sum(as.numeric(value), na.rm = TRUE)
+# Load processed data from 01_merge_data.R
+resistance_split <- read.csv(
+  file.path(
+    data_dir,
+    "resistance_split_processed.csv"
+  )
+)
+
+# Keep farm samples only
+farm_data <- resistance_split %>%
+  filter(sample_type == "farm_sample")
+
+# Summarise abundance by sample and resistance class group
+class_summary <- farm_data %>%
+  group_by(
+    sample_name,
+    farm_id,
+    corral_id,
+    corral_type,
+    class_group
   ) %>%
-  
-  pivot_wider(
-    names_from = class,
-    values_from = abundance,
-    values_fill = 0
+  summarise(
+    abundance = sum(abundance, na.rm = TRUE),
+    .groups = "drop"
   )
 
-# Convert to matrix
-pca_matrix <- pca_data %>%
-  column_to_rownames("sample_name")
+# Calculate relative abundance within each sample
+pcoa_data <- class_summary %>%
+  group_by(sample_name) %>%
+  mutate(
+    relative_abundance = abundance / sum(abundance)
+  ) %>%
+  ungroup()
 
-# Remove zero variance columns
-pca_matrix <- pca_matrix[, apply(pca_matrix, 2, var) != 0]
-
-# Run PCA
-pca_result <- prcomp(
-  pca_matrix,
-  scale. = TRUE
-)
-
-# Create PCA dataframe
-pca_plot_data <- data.frame(
-  Sample = rownames(pca_result$x),
-  PC1 = pca_result$x[,1],
-  PC2 = pca_result$x[,2]
-)
-
-# Check PCA data
-head(pca_plot_data)
-
-# PCA plot
-pca_plot <- ggplot(pca_plot_data,
-  aes(x = PC1, y = PC2)) +
-  geom_point(size = 4,
-    color = "#5B4B8A"
-  ) +
-  geom_text(
-    aes(label = Sample),
-    vjust = -1,
-    size = 3
-  ) +
-  theme_minimal() +
-  labs(
-    title = "PCA of resistance profiles",
-    x = "PC1",
-    y = "PC2"
-  ) +
-  theme(
-    plot.title = element_text(
-      size = 16,
-      face = "bold"
-      ),
-    axis.title = element_text(
-      size = 13
-      ),
-    axis.text = element_text(
-      size = 10)
-  )
-
-# Show PCA plot
-pca_plot
-
-# Save PCA figure
-ggsave(
-  "figures/pca_resistance_profiles.png",
-  pca_plot,
-  width = 8,
-  height = 6
-)
-
+# Check relative abundance sums to 1 for each sample
+pcoa_data %>%
+  group_by(sample_name) %>%
+  summarise(total = sum(relative_abundance))
