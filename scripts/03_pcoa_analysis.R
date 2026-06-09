@@ -1,12 +1,11 @@
 # 03_pcoa_analysis.R
 # Purpose: Explore resistome composition differences among farm samples using PCoA
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: PCoA plots for downstream beta diversity analysis
+# Output: PCoA plot of resistome composition across farm samples
 
 # This analysis follows a microbiome ecology framework.
-# Bray-Curtis dissimilarity is calculated using relative abundance values of grouped
-# Resistance classes to assess differences in resistome composition among farm samples
-# PCoA is then used to visualise overall variation in resistome composition
+# Bray-Curtis dissimilarity is calculated from grouped resistance class abundances.
+# PCoA is used to visualise differences in resistome composition among farm samples.
 
 # Load packages
 library(tidyverse)
@@ -57,3 +56,151 @@ pcoa_data <- class_summary %>%
 pcoa_data %>%
   group_by(sample_name) %>%
   summarise(total = sum(relative_abundance))
+
+# Create sample by resistance class matrix
+pcoa_matrix <- pcoa_data %>%
+  select(
+    sample_name,
+    class_group,
+    relative_abundance
+  ) %>%
+  pivot_wider(
+    names_from = class_group,
+    values_from = relative_abundance,
+    values_fill = 0
+  )
+
+# Check matrix dimensions
+dim(pcoa_matrix)
+
+# View first few rows
+head(pcoa_matrix)
+
+# Store sample names
+sample_names <- pcoa_matrix$sample_name
+
+# Convert relative abundance table to matrix
+pcoa_matrix_values <- pcoa_matrix %>%
+  select(-sample_name) %>%
+  as.matrix()
+
+# Calculate Bray-Curtis dissimilarity
+bray_dist <- vegdist(
+  pcoa_matrix_values,
+  method = "bray"
+)
+
+# Run PCoA
+pcoa_result <- cmdscale(
+  bray_dist,
+  k = 2,
+  eig = TRUE
+)
+
+# Calculate percentage variation explained by each PCoA axis
+pcoa_var <- pcoa_result$eig /
+  sum(pcoa_result$eig[pcoa_result$eig > 0]) * 100
+
+# Create PCoA result table
+pcoa_df <- data.frame(
+  sample_name = sample_names,
+  PCoA1 = pcoa_result$points[, 1],
+  PCoA2 = pcoa_result$points[, 2]
+)
+
+# Check PCoA result
+head(pcoa_df)
+
+# Prepare metadata for plotting
+metadata <- farm_data %>%
+  distinct(
+    sample_name,
+    farm_id,
+    corral_id,
+    corral_type
+  )
+
+# Add metadata to PCoA results
+pcoa_df <- pcoa_df %>%
+  left_join(metadata, by = "sample_name")
+
+# Combine S1 and S into a single corral type category
+pcoa_df <- pcoa_df %>%
+  mutate(
+    corral_type = ifelse(corral_type == "S1", "S", corral_type)
+  )
+
+# Check PCoA table with metadata
+head(pcoa_df)
+
+# Plot PCoA results
+# Coloured = corral type
+p1 <- ggplot(
+  pcoa_df,
+  aes(
+    x = PCoA1,
+    y = PCoA2,
+    colour = corral_type
+  )
+) +
+  geom_point(size = 3.5) +
+  scale_colour_manual(
+    values = c(
+      "H" = "#E76F51",
+      "S" = "#00A896"
+    )
+  ) +
+  theme_bw() +
+  labs(
+    x = paste0("PCoA1 (", round(pcoa_var[1], 1), "%)"),
+    y = paste0("PCoA2 (", round(pcoa_var[2], 1), "%)"),
+    colour = "Corral type"
+  ) +
+  theme(
+    axis.text = element_text(size = 9),
+    axis.title = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 9),
+    legend.position = "bottom"
+  )
+
+# Display plot
+p1
+
+# Save PDF
+ggsave(
+  filename = file.path(
+    figures_dir,
+    "pcoa_plot.pdf"
+  ),
+  plot = p1,
+  width = 9,
+  height = 6
+)
+
+# Save PNG
+ggsave(
+  filename = file.path(
+    figures_dir,
+    "pcoa_plot.png"
+    ),
+  plot = p1,
+  width = 9,
+  height = 6,
+  dpi = 300
+)
+
+# Check output files
+file.exists(
+  file.path(
+    figures_dir,
+    "pcoa_plot.pdf"
+  )
+)
+
+file.exists(
+  file.path(
+    figures_dir,
+    "pcoa_plot.png"
+  )
+)
