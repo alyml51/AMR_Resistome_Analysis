@@ -94,7 +94,7 @@ class_colours <- c(
   "Metal resistance" = "#0072B2",
   "MLS" = "#1B9E77",
   "Multi-drug resistance" = "#80B1D3",
-  "Other" = "grey85",
+  "Other" = "grey75",
   "Phenicol" = "#7570B3",
   "Rifampin" = "#CC79A7",
   "Sulfonamides/Trimethoprim" = "#A6761D",
