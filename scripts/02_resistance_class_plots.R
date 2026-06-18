@@ -3,9 +3,8 @@
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
 # Output: stacked bar plots of grouped resistance class composition
 
-# The processed data already contains grouped resistance class information.
-# created in 01_merge_data.R. This script uses those groups to visualise.
-# relative abundance patterns across farm samples.
+# The processed data already contains grouped resistance class information created in 01_merge_data.R. 
+# This script uses those groups to visualise relative abundance patterns across farm samples.
 
 # Load packages
 library(dplyr)
@@ -23,7 +22,7 @@ resistance_split <- read.csv(
   file.path(data_dir, "resistance_split_processed.csv")
 )
 
-# Check input colums
+# Check input colunms
 colnames(resistance_split)
 
 
@@ -64,11 +63,16 @@ plot_data %>%
   group_by(sample_name) %>%
   summarise(total = sum(relative_abundance))
 
-# Keep farm samples only for the main plot
+# Keep farm samples only and relabel corral types
 plot_data_farm <- plot_data %>%
   filter(sample_type == "farm_sample") %>%
   mutate(
-    corral_type = ifelse(corral_type == "S1", "S", corral_type)
+    corral_type = ifelse(corral_type == "S1", "S", corral_type),
+    corral_type_label = ifelse(
+      corral_type == "H",
+      "Healthy (n = 25)",
+      "Sick (n = 8)"
+      )
   )
 
 # Order samples by farm for plotting
@@ -82,19 +86,19 @@ plot_data_farm$sample_name <- factor(
 
 # Define colours for resistance class groups
 class_colours <- c(
-  "Aminoglycosides" = "#E76F51",
-  "Beta-lactams" = "#F4A261",
-  "Biocide resistance" = "#B8A100",
-  "Fluoroquinolones" = "#7CB342",
-  "Glycopeptides" = "#2A9D8F",
-  "Metal resistance" = "#006D77",
-  "MLS" = "#118AB2",
-  "Multi-drug resistance" = "#4CC9F0",
-  "Other" = "grey70",
-  "Phenicol" = "#8E7DBE",
-  "Rifampin" = "#B565D9",
-  "Sulfonamides/Trimethoprim" = "#D95F8D",
-  "Tetracyclines" = "#F72585"
+  "Aminoglycosides" = "#D55E00",
+  "Beta-lactams" = "#E69F00",
+  "Biocide resistance" = "#B79F00",
+  "Fluoroquinolones" = "#009E73",
+  "Glycopeptides" = "#56B4E9",
+  "Metal resistance" = "#0072B2",
+  "MLS" = "#1B9E77",
+  "Multi-drug resistance" = "#80B1D3",
+  "Other" = "grey85",
+  "Phenicol" = "#7570B3",
+  "Rifampin" = "#CC79A7",
+  "Sulfonamides/Trimethoprim" = "#A6761D",
+  "Tetracyclines" = "#E7298A"
 )
 
 # Create stacked bar plot of resistance class composition
@@ -110,11 +114,15 @@ p1 <- ggplot(
     stat = "identity",
     width = 0.9
   ) +
+  facet_wrap(
+    ~ corral_type_label,
+    scales = "free_x"
+  ) +
   scale_fill_manual(values = class_colours) +
   labs(
-    x = "Sample",
-    y = "Relative abundance within each sample",
-    fill = "Resistance class"
+    x = "Sample ID",
+    y = "Relative abundance",
+    fill = "Resistance class group"
   ) +
   theme_bw() +
   theme(
@@ -122,14 +130,23 @@ p1 <- ggplot(
       angle = 45,
       hjust = 1,
       size = 8
-    )
+    ),
+    axis.title = element_text(size = 10),
+    legend.title = element_text(size = 10),
+    legend.text = element_text(size = 8),
+    strip.text = element_text(size = 10)
   )
 
 # Save PDF
 ggsave(
   filename = file.path(
     figures_dir,
-    "resistance_class_compositi
+    "resistance_class_composition.pdf"
+  ),
+  plot = p1,
+  width = 12,
+  height = 6
+)
 
 # Save PNG
 ggsave(
