@@ -66,7 +66,10 @@ plot_data %>%
 
 # Keep farm samples only for the main plot
 plot_data_farm <- plot_data %>%
-  filter(sample_type == "farm_sample")
+  filter(sample_type == "farm_sample") %>%
+  mutate(
+    corral_type = ifelse(corral_type == "S1", "S", corral_type)
+  )
 
 # Order samples by farm for plotting
 plot_data_farm$sample_name <- factor(
@@ -126,12 +129,7 @@ p1 <- ggplot(
 ggsave(
   filename = file.path(
     figures_dir,
-    "resistance_class_composition.pdf"
-  ),
-  plot = p1,
-  width = 12,
-  height = 6
-)
+    "resistance_class_compositi
 
 # Save PNG
 ggsave(
