@@ -204,3 +204,52 @@ file.exists(
     "pcoa_plot.png"
   )
 )
+
+# Check corral type counts
+table(pcoa_df$corral_type)
+
+# Test resistome composition differences between corral types
+permanova_result <- adonis2(
+  bray_dist ~ corral_type,
+  data = pcoa_df,
+  permutations = 999
+)
+
+# View PERMANOVA result
+permanova_result
+
+# Save PERMANOVA result
+permanova_table <- as.data.frame(permanova_result)
+permanova_table$term <- row.names(permanova_table)
+
+write.csv(
+  permanova_table,
+  file = file.path(
+    data_dir,
+    "permanova_results.csv"
+  ),
+  row.names = FALSE
+)
+
+# Test homogeneity of dispersion between corral types
+dispersion <- betadisper(
+  bray_dist,
+  pcoa_df$corral_type
+)
+
+# View PERMDISP result
+permdisp_result <- anova(dispersion)
+permdisp_result
+
+# Save PERMDISP result
+permdisp_table <- as.data.frame(permdisp_result)
+permdisp_table$term <- row.names(permdisp_table)
+
+write.csv(
+  permdisp_table,
+  file = file.path(
+    data_dir,
+    "permdisp_results.csv"
+  ),
+  row.names = FALSE
+)
