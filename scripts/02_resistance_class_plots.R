@@ -25,7 +25,6 @@ resistance_split <- read.csv(
 # Check input colunms
 colnames(resistance_split)
 
-
 # Check grouped resistance classes
 sort(unique(resistance_split$class_group))
 table(resistance_split$class_group)
