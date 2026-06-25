@@ -437,3 +437,35 @@ wilcox.test(
   exact = FALSE
 )
 
+# Create Hill number test results table
+hill_stats <- data.frame(
+  metric = c(
+    "Hill q0",
+    "Hill q1",
+    "Hill q2"
+  ),
+  p_value = c(
+    0.1704,
+    0.0460,
+    0.0246
+  )
+)
+
+# Apply Benjamini-Hochberg correction
+hill_stats$p_adjusted <- p.adjust(
+  hill_stats$p_value,
+  method = "BH"
+)
+
+# Check results
+hill_stats
+
+write.csv(
+  hill_stats,
+  file = file.path(
+    data_dir,
+    "hill_number_statistics.csv"
+  ),
+  row.names = FALSE
+)
+
