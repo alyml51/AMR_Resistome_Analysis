@@ -59,7 +59,7 @@ pcoa_data %>%
 
 # Create sample by resistance class matrix
 pcoa_matrix <- pcoa_data %>%
-  select(
+  dplyr::select(
     sample_name,
     class_group,
     relative_abundance
@@ -81,7 +81,7 @@ sample_names <- pcoa_matrix$sample_name
 
 # Convert relative abundance table to matrix
 pcoa_matrix_values <- pcoa_matrix %>%
-  select(-sample_name) %>%
+  dplyr::select(-sample_name) %>%
   as.matrix()
 
 # Calculate Bray-Curtis dissimilarity
@@ -146,8 +146,8 @@ p1 <- ggplot(
   geom_point(size = 3.5) +
   scale_colour_manual(
     values = c(
-      "H" = "#E76F51",
-      "S" = "#00A896"
+      "H" = "#00A896",
+      "S" = "#E76F51"
     )
   ) +
   theme_bw() +
@@ -161,7 +161,6 @@ p1 <- ggplot(
     axis.title = element_text(size = 10),
     legend.title = element_text(size = 10),
     legend.text = element_text(size = 9),
-    legend.position = "bottom"
   )
 
 # Display plot
@@ -174,7 +173,7 @@ ggsave(
     "pcoa_plot.pdf"
   ),
   plot = p1,
-  width = 9,
+  width = 7,
   height = 6
 )
 
@@ -185,7 +184,7 @@ ggsave(
     "pcoa_plot.png"
     ),
   plot = p1,
-  width = 9,
+  width = 7,
   height = 6,
   dpi = 300
 )
