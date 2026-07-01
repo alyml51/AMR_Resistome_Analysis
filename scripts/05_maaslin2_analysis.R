@@ -66,7 +66,7 @@ class_data <- farm_data %>%
 
 # Create sample by resistance class group matrix
 maaslin_input <- class_data %>%
-  select(
+  dplyr::select(
     sample_name,
     class_group,
     abundance
@@ -181,8 +181,8 @@ maaslin_plot <- ggplot(
   coord_flip() +
   scale_fill_manual(
     values = c(
-      "FALSE" = "#E76F51",
-      "TRUE" = "#00A896"
+      "FALSE" ="#00A896",
+      "TRUE" = "#E76F51"
     ),
     labels = c(
       "Higher in H",
