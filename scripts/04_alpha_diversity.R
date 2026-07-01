@@ -56,7 +56,7 @@ alpha_data <- farm_data %>%
 
 # Create sample by resistance class group matrix
 alpha_matrix <- alpha_data %>%
-  select(
+  dplyr::select(
     sample_name,
     class_group,
     abundance
@@ -82,7 +82,7 @@ sample_info %>%
 
 # Convert abundance table to matrix
 alpha_matrix_values <- alpha_matrix %>%
-  select(-sample_name) %>%
+  dplyr::select(-sample_name) %>%
   as.matrix()
 
 # Check zero abundance samples
@@ -161,7 +161,7 @@ summary(alpha_results)
 
 # Convert Hill number results to long format
 hill_long <- alpha_results %>%
-  select(
+  dplyr::select(
     sample_name,
     farm_id,
     corral_type,
@@ -210,8 +210,8 @@ hill_q0_plot <- ggplot(
   ) +
   scale_fill_manual(
     values = c(
-      "H" = "#E76F51",
-      "S" = "#00A896"
+      "H" = "#00A896",
+      "S" = "#E76F51"
     )
   ) +
   theme_bw() +
@@ -248,8 +248,8 @@ hill_q1_plot <- ggplot(
   ) +
   scale_fill_manual(
     values = c(
-      "H" = "#E76F51",
-      "S" = "#00A896"
+      "H" = "#00A896",
+      "S" = "#E76F51"
     )
   ) +
   theme_bw() +
@@ -286,8 +286,8 @@ hill_q2_plot <- ggplot(
   ) +
   scale_fill_manual(
     values = c(
-      "H" = "#E76F51",
-      "S" = "#00A896"
+      "H" = "#00A896",
+      "S" = "#E76F51"
     )
   ) +
   theme_bw() +
@@ -468,4 +468,3 @@ write.csv(
   ),
   row.names = FALSE
 )
-
