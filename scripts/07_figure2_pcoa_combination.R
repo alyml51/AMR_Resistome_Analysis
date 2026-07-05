@@ -30,13 +30,39 @@ source(
   )
 )
 
-# Combine PCoA plots
-figure2_pcoa <- p1 + clr_pcoa_plot +
-  plot_annotation(
-    tag_levels = "A",
-    theme = theme(
-      plot.tag = element_text(size = 14, face = "bold")
+# Add panel labels
+p1_labelled <- p1 +
+  labs(
+    title = "A"
+  ) +
+  theme(
+    plot.title = element_text(
+      size = 14,
+      face = "bold",
+      hjust = 0
     )
+  )
+
+clr_pcoa_plot_labelled <- clr_pcoa_plot +
+  labs(
+    title = "B"
+  ) +
+  theme(
+    plot.title = element_text(
+      size = 14,
+      face = "bold",
+      hjust = 0
+    )
+  )
+
+# Combine PCoA plots
+figure2_pcoa <- p1_labelled + clr_pcoa_plot_labelled +
+  plot_layout(
+    guides = "collect",
+    widths = c(1, 1)
+  ) &
+  theme(
+    legend.position = "right"
   )
 
 # Display combined figure
@@ -79,4 +105,3 @@ file.exists(
     "figure2_pcoa_combined.png"
   )
 )
-
