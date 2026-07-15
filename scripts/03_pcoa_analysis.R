@@ -48,7 +48,8 @@ class_summary <- farm_data %>%
 pcoa_data <- class_summary %>%
   group_by(sample_name) %>%
   mutate(
-    relative_abundance = abundance / sum(abundance)
+    relative_abundance = abundance / 
+      sum(abundance, na.rm = TRUE)
   ) %>%
   ungroup()
 
@@ -160,7 +161,7 @@ p1 <- ggplot(
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 10),
     legend.title = element_text(size = 10),
-    legend.text = element_text(size = 9),
+    legend.text = element_text(size = 9)
   )
 
 # Display plot
@@ -207,19 +208,30 @@ file.exists(
 # Check corral type counts
 table(pcoa_df$corral_type)
 
+# Set seed for reproducible permutations
+set.seed(123)
+
 # Test resistome composition differences between corral types
+# Farm is included first to account for farm-level variation
 permanova_result <- adonis2(
-  bray_dist ~ corral_type,
+  bray_dist ~ farm_id + corral_type,
   data = pcoa_df,
-  permutations = 999
+  permutations = 127,
+  strata = pcoa_df$farm_id,
+  by = "terms"
 )
 
 # View PERMANOVA result
 permanova_result
 
 # Save PERMANOVA result
-permanova_table <- as.data.frame(permanova_result)
-permanova_table$term <- row.names(permanova_table)
+permanova_table <- as.data.frame(
+  permanova_result
+)
+
+permanova_table$term <- row.names(
+  permanova_table
+)
 
 write.csv(
   permanova_table,
@@ -233,16 +245,31 @@ write.csv(
 # Test homogeneity of dispersion between corral types
 dispersion <- betadisper(
   bray_dist,
-  pcoa_df$corral_type
+  pcoa_df$corral_type,
+  type = "median",
+  bias.adjust = TRUE
+)
+
+# Run PERMDISP with permutations restricted within farm
+permdisp_result <- permutest(
+  dispersion,
+  permutations = permute::how(
+    blocks = pcoa_df$farm_id,
+    nperm = 127
+  )
 )
 
 # View PERMDISP result
-permdisp_result <- anova(dispersion)
 permdisp_result
 
 # Save PERMDISP result
-permdisp_table <- as.data.frame(permdisp_result)
-permdisp_table$term <- row.names(permdisp_table)
+permdisp_table <- as.data.frame(
+  permdisp_result$tab
+)
+
+permdisp_table$term <- row.names(
+  permdisp_table
+)
 
 write.csv(
   permdisp_table,
