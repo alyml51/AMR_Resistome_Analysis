@@ -262,19 +262,30 @@ file.exists(
   )
 )
 
+# Set seed for reproducible permutations
+set.seed(123)
+
 # Test resistome composition differences between corral types
+# Farm is included first to account for farm-level variation
 clr_permanova <- adonis2(
-  clr_distance ~ corral_type,
+  clr_distance ~ farm_id + corral_type,
   data = clr_pcoa_df,
-  permutations = 999
+  permutations = 127,
+  strata = clr_pcoa_df$farm_id,
+  by = "terms"
 )
 
 # View PERMANOVA result
 clr_permanova
 
 # Save PERMANOVA result
-clr_permanova_table <- as.data.frame(clr_permanova)
-clr_permanova_table$term <- row.names(clr_permanova_table)
+clr_permanova_table <- as.data.frame(
+  clr_permanova
+)
+
+clr_permanova_table$term <- row.names(
+  clr_permanova_table
+)
 
 write.csv(
   clr_permanova_table,
@@ -296,16 +307,31 @@ file.exists(
 # Test homogeneity of dispersion between corral types
 clr_dispersion <- betadisper(
   clr_distance,
-  clr_pcoa_df$corral_type
+  clr_pcoa_df$corral_type,
+  type = "median",
+  bias.adjust = TRUE
+)
+
+# Run PERMDISP with permutations restricted within farm
+clr_permdisp <- permutest(
+  clr_dispersion,
+  permutations = permute::how(
+    blocks = clr_pcoa_df$farm_id,
+    nperm = 127
+  )
 )
 
 # View PERMDISP result
-clr_permdisp <- anova(clr_dispersion)
 clr_permdisp
 
 # Save PERMDISP result
-clr_permdisp_table <- as.data.frame(clr_permdisp)
-clr_permdisp_table$term <- row.names(clr_permdisp_table)
+clr_permdisp_table <- as.data.frame(
+  clr_permdisp$tab
+)
+
+clr_permdisp_table$term <- row.names(
+  clr_permdisp_table
+)
 
 write.csv(
   clr_permdisp_table,
@@ -323,3 +349,4 @@ file.exists(
     "clr_permdisp_results.csv"
   )
 )
+
