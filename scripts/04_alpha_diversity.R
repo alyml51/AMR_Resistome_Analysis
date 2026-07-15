@@ -120,9 +120,10 @@ alpha_results <- alpha_results %>%
     by = "sample_name"
   )
 
-# Set corral type order
+# Set farm and corral type as factors
 alpha_results <- alpha_results %>%
   mutate(
+    farm_id = factor(farm_id),
     corral_type = factor(
       corral_type,
       levels = c("H", "S")
@@ -416,50 +417,131 @@ file.exists(
   )
 )
 
-# Compare Hill number q0
-wilcox.test(
+# Compare Hill numbers using all samples
+hill_q0_test <- wilcox.test(
   hill_q0 ~ corral_type,
   data = alpha_results,
   exact = FALSE
 )
 
-# Compare Hill number q1
-wilcox.test(
+hill_q1_test <- wilcox.test(
   hill_q1 ~ corral_type,
   data = alpha_results,
   exact = FALSE
 )
 
-# Compare Hill number q2
-wilcox.test(
+hill_q2_test <- wilcox.test(
   hill_q2 ~ corral_type,
   data = alpha_results,
   exact = FALSE
 )
 
-# Create Hill number test results table
-hill_stats <- data.frame(
+# Create results table for all samples
+all_sample_stats <- data.frame(
+  analysis = "All samples",
   metric = c(
     "Hill q0",
     "Hill q1",
     "Hill q2"
   ),
   p_value = c(
-    0.1704,
-    0.0460,
-    0.0246
+    hill_q0_test$p.value,
+    hill_q1_test$p.value,
+    hill_q2_test$p.value
   )
 )
 
-# Apply Benjamini-Hochberg correction
-hill_stats$p_adjusted <- p.adjust(
-  hill_stats$p_value,
-  method = "BH"
+# Identify farms containing both healthy and sick samples
+paired_farms <- alpha_results %>%
+  distinct(
+    farm_id,
+    corral_type
+  ) %>%
+  count(farm_id) %>%
+  filter(n == 2) %>%
+  pull(farm_id)
+
+# Check paired farms
+paired_farms
+length(paired_farms)
+
+# Prepare paired Hill number data
+paired_alpha <- alpha_results %>%
+  filter(farm_id %in% paired_farms) %>%
+  dplyr::select(
+    farm_id,
+    corral_type,
+    hill_q0,
+    hill_q1,
+    hill_q2
+  ) %>%
+  pivot_wider(
+    names_from = corral_type,
+    values_from = c(
+      hill_q0,
+      hill_q1,
+      hill_q2
+    )
+  )
+
+# Confirm that seven paired farms are included
+stopifnot(nrow(paired_alpha) == 7)
+
+# Compare Hill numbers within paired farms
+paired_q0_test <- wilcox.test(
+  paired_alpha$hill_q0_H,
+  paired_alpha$hill_q0_S,
+  paired = TRUE,
+  exact = FALSE
 )
 
-# Check results
+paired_q1_test <- wilcox.test(
+  paired_alpha$hill_q1_H,
+  paired_alpha$hill_q1_S,
+  paired = TRUE,
+  exact = FALSE
+)
+
+paired_q2_test <- wilcox.test(
+  paired_alpha$hill_q2_H,
+  paired_alpha$hill_q2_S,
+  paired = TRUE,
+  exact = FALSE
+)
+
+# Create results table for paired farms
+paired_farm_stats <- data.frame(
+  analysis = "Paired farms",
+  metric = c(
+    "Hill q0",
+    "Hill q1",
+    "Hill q2"
+  ),
+  p_value = c(
+    paired_q0_test$p.value,
+    paired_q1_test$p.value,
+    paired_q2_test$p.value
+  )
+)
+
+# Combine statistical results
+hill_stats <- bind_rows(
+  all_sample_stats,
+  paired_farm_stats
+) %>%
+  group_by(analysis) %>%
+  mutate(
+    p_adjusted = p.adjust(
+      p_value,
+      method = "BH"
+    )
+  ) %>%
+  ungroup()
+
+# View statistical results
 hill_stats
 
+# Save Hill number statistics
 write.csv(
   hill_stats,
   file = file.path(
@@ -467,4 +549,29 @@ write.csv(
     "hill_number_statistics.csv"
   ),
   row.names = FALSE
+)
+
+# Save paired farm data
+write.csv(
+  paired_alpha,
+  file = file.path(
+    data_dir,
+    "hill_number_paired_farms.csv"
+  ),
+  row.names = FALSE
+)
+
+# Check output files
+file.exists(
+  file.path(
+    data_dir,
+    "hill_number_statistics.csv"
+  )
+)
+
+file.exists(
+  file.path(
+    data_dir,
+    "hill_number_paired_farms.csv"
+  )
 )
