@@ -1,21 +1,28 @@
 # 05_maaslin2_analysis.R
-# Purpose: Test resistance class groups associated with corral type
+# Purpose: Estimate associations between resistance class groups and corral type
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: MaAsLin2 results and coefficient plot
+# Output: MaAsLin2 result files, corral-type results table and coefficient plot
 
-# MaAsLin2 is used to test which resistance class groups differ between healthy and sick corrals.
+# MaAsLin2 is used to estimate class-level associations with corral type while including farm as a random effect.
 
 # Load packages
 library(tidyverse)
 library(Maaslin2)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
 results_dir <- file.path(project_dir, "results")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Create MaAsLin2 output folder
 maaslin_dir <- file.path(
