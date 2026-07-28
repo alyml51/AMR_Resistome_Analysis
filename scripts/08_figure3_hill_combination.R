@@ -7,22 +7,21 @@
 library(ggplot2)
 library(patchwork)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 figures_dir <- file.path(project_dir, "figures")
 scripts_dir <- file.path(project_dir, "scripts")
 
-# Run Hill number analysis
-source(
-  file.path(
-    scripts_dir,
-    "04_alpha_diversity.R"
-  )
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
 )
 
-# Load Hill number plots
+# Run Hill number analysis
 source(
   file.path(
     scripts_dir,
