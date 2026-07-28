@@ -1,18 +1,25 @@
 # 07_figure2_pcoa_combination.R
 # Purpose: Combine Bray-Curtis and CLR/Aitchison PCoA plots into a single Figure 2 for the dissertation.
 # Input: Bray-Curtis PCoA from 03_pcoa_analysis.R and CLR/Aitchison PCoA from 06_clr_pcoa_analysis.R
-# Output: Combined Figure 2 in PDE and PNG formats
+# Output: Combined Figure 2 in PDF and PNG formats
 
 # Load packages
 library(ggplot2)
 library(patchwork)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 figures_dir <- file.path(project_dir, "figures")
 scripts_dir <- file.path(project_dir, "scripts")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Run Bray-Curtis PCoA analysis
 source(
