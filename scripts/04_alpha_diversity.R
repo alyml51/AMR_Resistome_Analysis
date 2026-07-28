@@ -1,7 +1,7 @@
 # 04_alpha_diversity.R
 # Purpose: Compare resistome alpha diversity across corral types
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: Hill number summary tables and alpha diversity plots
+# Output: Hill number result tables, statistical test tables and alpha diversity plots
 
 # Hill numbers (q0, q1, q2) are calculated to compare resistome alpha diversity between corral types.
 
@@ -12,12 +12,19 @@ library(vegan)
 # Set seed for reproducible jitter positions
 set.seed(123)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Load processed data from 01_merge_data.R
 resistance_split <- read.csv(
