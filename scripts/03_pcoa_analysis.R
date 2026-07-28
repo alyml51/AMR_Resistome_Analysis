@@ -1,22 +1,29 @@
 # 03_pcoa_analysis.R
 # Purpose: Explore resistome composition differences among farm samples using PCoA
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: PCoA plot of resistome composition across farm samples
+# Output: Bray-Curtis PCoA plot and PERMANOVA/PERMDISP result tables
 
 # This analysis follows a microbiome ecology framework.
-# Bray-Curtis dissimilarity is calculated from grouped resistance class abundances.
+# Bray-Curtis dissimilarity is calculated from grouped resistance class relative abundances.
 # PCoA is used to visualise differences in resistome composition among farm samples.
 
 # Load packages
 library(tidyverse)
 library(vegan)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Load processed data from 01_merge_data.R
 resistance_split <- read.csv(
@@ -211,8 +218,71 @@ table(pcoa_df$corral_type)
 # Set seed for reproducible permutations
 set.seed(123)
 
-# Test resistome composition differences between corral types
-# Farm is included first to account for farm-level variation
+# Run unadjusted PERMANOVA
+bray_unadjusted <- adonis2(
+  bray_dist ~ corral_type,
+  data = pcoa_df,
+  permutations = 999
+)
+
+# View unadjusted PERMANOVA result
+bray_unadjusted
+
+# Save unadjusted PERMANOVA result
+bray_unadjusted_table <- as.data.frame(
+  bray_unadjusted
+)
+
+bray_unadjusted_table$term <- row.names(
+  bray_unadjusted_table
+)
+
+write.csv(
+  bray_unadjusted_table,
+  file = file.path(
+    data_dir,
+    "bray_permanova_unadjusted.csv"
+  ),
+  row.names = FALSE
+)
+
+# Run PERMANOVA with permutations restricted within farm
+set.seed(123)
+
+bray_restricted <- adonis2(
+  bray_dist ~ corral_type,
+  data = pcoa_df,
+  permutations = 127,
+  strata = pcoa_df$farm_id
+)
+
+# View restricted PERMANOVA result
+bray_restricted
+
+# Save restricted PERMANOVA result
+bray_restricted_table <- as.data.frame(
+  bray_restricted
+)
+
+bray_restricted_table$term <- row.names(
+  bray_restricted_table
+)
+
+write.csv(
+  bray_restricted_table,
+  file = file.path(
+    data_dir,
+    "bray_permanova_restricted.csv"
+  ),
+  row.names = FALSE
+)
+
+# Set seed for sequential PERMANOVA
+set.seed(123)
+
+
+# Run sequential PERMANOVA with farm entered first
+# Permutations are restricted within farm
 permanova_result <- adonis2(
   bray_dist ~ farm_id + corral_type,
   data = pcoa_df,
@@ -237,7 +307,7 @@ write.csv(
   permanova_table,
   file = file.path(
     data_dir,
-    "permanova_results.csv"
+    "bray_permanova_sequential.csv"
   ),
   row.names = FALSE
 )
@@ -251,6 +321,8 @@ dispersion <- betadisper(
 )
 
 # Run PERMDISP with permutations restricted within farm
+set.seed(123)
+
 permdisp_result <- permutest(
   dispersion,
   permutations = permute::how(
@@ -275,7 +347,7 @@ write.csv(
   permdisp_table,
   file = file.path(
     data_dir,
-    "permdisp_results.csv"
+    "bray_permdisp_results.csv"
   ),
   row.names = FALSE
 )
