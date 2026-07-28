@@ -3,10 +3,10 @@
 # Input: sample-level AMR feature tables and study metadata
 # Output: data/resistance_split_processed.csv for downstream analysis
 
-# Raw MEGARes resistance annotations are merged with study metadata.
+# TELCoMB AMR feature annotations are merged with study metadata.
 # Resistance classes are grouped into 13 broader categories for downstream analysis.
 # Major antibiotic classes are kept separate.
-# Metal and biocide resistance is grouped into a single category. 
+# Metal and biocide resistance classes are grouped into separate categories. 
 # Low-abundance or environmentally-specific classes are grouped as "Other".
 
 # Load packages
@@ -14,12 +14,11 @@ library(tidyverse)
 library(readxl)
 
 # Set project directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+project_dir <- getwd()
 
 # Define project folders
-raw_data_dir <- "E:/A-4137/Mengchan/Data"
+raw_data_dir <- file.path(project_dir, "data", "raw")
 data_dir <- file.path(project_dir, "data")
-figures_dir <- file.path(project_dir, "figures")
 
 # List all AMR feature files
 files <- list.files(
@@ -93,14 +92,16 @@ resistance_split$sample_type <- ifelse(
 )
 
 # Check sample type assignment
-table(resistance_split$sample_type)
+resistance_split %>%
+  distinct(sample_name, sample_type) %>%
+  count(sample_type)
 
 # Read and join study metadata
 metadata <- read_excel(
   file.path(raw_data_dir, "Study Design Mengchan.xlsx")
   )
 
-# Remove duplicated samples from metadata
+# Keep one metadata record per sample
 metadata <- metadata %>%
   distinct(sample_name, .keep_all = TRUE)
 
@@ -160,3 +161,4 @@ write.csv(
 
 # Check processed file was saved
 file.exists(file.path(data_dir, "resistance_split_processed.csv"))
+
