@@ -1,7 +1,7 @@
 # 09_clinical_arg_analysis.R
 # Purpose: Describe clinically relevant low-abundance ARGs across farm samples
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: Clinical ARG summary files, detection plot and sample-level heatmap
+# Output: Clinical ARG summary tables and combined Figure 5 in PDF and PNG formats
 
 # This analysis focuses on selected rifampin-associated resistance genes
 # and carbapenem-associated metallo-beta-lactamase families.
@@ -11,12 +11,19 @@
 library(tidyverse)
 library(patchwork)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Load processed data from 01_merge_data.R
 resistance_split <- read.csv(
@@ -559,4 +566,3 @@ file.exists(
     "figure5_clinical_arg_summary.pdf"
   )
 )
-
