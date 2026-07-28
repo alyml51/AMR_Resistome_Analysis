@@ -11,18 +11,25 @@ library(dplyr)
 library(ggplot2)
 
 # Set project directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Load processed table from 01_merge_data.R
 resistance_split <- read.csv(
   file.path(data_dir, "resistance_split_processed.csv")
 )
 
-# Check input colunms
+# Check input columns
 colnames(resistance_split)
 
 # Check grouped resistance classes
@@ -53,7 +60,7 @@ dim(class_summary)
 plot_data <- class_summary %>%
   group_by(sample_name) %>%
   mutate(
-    relative_abundance = abundance / sum(abundance)
+    relative_abundance = abundance / sum(abundance, na.rm = TRUE)
   ) %>%
   ungroup()
 
@@ -151,7 +158,7 @@ ggsave(
 ggsave(
   file.path(figures_dir,
             "figure1_resistance_class_composition.png"),
-  p1,
+  plot = p1,
   width = 12,
   height = 6,
   dpi = 300
@@ -171,20 +178,3 @@ file.exists(
     "figure1_resistance_class_composition.png"
   )
 )
-
-
-
-plot_data_farm %>%
-  filter(
-    class_group == "Tetracyclines",
-    sample_name %in% c("C016", "C073")
-  ) %>%
-  mutate(
-    percent = relative_abundance * 100
-  ) %>%
-  dplyr::select(
-    sample_name,
-    corral_type,
-    class_group,
-    percent
-  )
