@@ -1,7 +1,7 @@
 # 06_clr_pcoa_analysis.R
 # Purpose: Explore resistome composition using CLR transformation and Aitchison distance
 # Input: data/resistance_split_processed.csv from 01_merge_data.R
-# Output: CLR-based PCoA plot of resistome composition across farm samples
+# Output: CLR/Aitchison PCoA plot and PERMANOVA/PERMDISP result tables
 
 # This analysis follows compositional data analysis principles.
 # Zero counts are replaced using multiplicative replacement.
@@ -14,12 +14,19 @@ library(vegan)
 library(zCompositions)
 library(compositions)
 
-# Set working directory
-project_dir <- "E:/A-4137/AMR_Resistome_Analysis"
+# Set project directory
+project_dir <- getwd()
 
 # Define project folders
 data_dir <- file.path(project_dir, "data")
 figures_dir <- file.path(project_dir, "figures")
+
+# Create the figures directory if required
+dir.create(
+  figures_dir,
+  recursive = TRUE,
+  showWarnings = FALSE
+)
 
 # Load processed data from 01_merge_data.R
 resistance_split <- read.csv(
@@ -64,15 +71,6 @@ clr_matrix <- clr_data %>%
     values_fill = 0
   )
 
-# Replace zeros using multiplicative replacement
-clr_matrix_replace <- clr_matrix
-
-clr_matrix_replace[ , 5:ncol(clr_matrix_replace)] <-
-  cmultRepl(
-    clr_matrix_replace[ , 5:ncol(clr_matrix_replace)],
-    method = "CZM"
-  )
-
 # Store sample metadata
 clr_metadata <- clr_matrix %>%
   dplyr::select(
@@ -99,7 +97,7 @@ sum(clr_abundance == 0)
 # Check sample total abundance before replacement
 summary(rowSums(clr_abundance))
 
-# Replace zeros using multiplicative replacement
+# Replace zeros using the count zero multiplicative method
 clr_abundance_replace <- cmultRepl(
   clr_abundance,
   method = "CZM"
@@ -218,7 +216,7 @@ clr_pcoa_plot <- ggplot(
     axis.text = element_text(size = 9),
     axis.title = element_text(size = 10),
     legend.title = element_text(size = 10),
-    legend.text = element_text(size = 9),
+    legend.text = element_text(size = 9)
   )
 
 # Display plot
@@ -265,8 +263,39 @@ file.exists(
 # Set seed for reproducible permutations
 set.seed(123)
 
-# Test resistome composition differences between corral types
-# Farm is included first to account for farm-level variation
+# Run unadjusted PERMANOVA
+clr_unadjusted <- adonis2(
+  clr_distance ~ corral_type,
+  data = clr_pcoa_df,
+  permutations = 999
+)
+
+# View unadjusted PERMANOVA result
+clr_unadjusted
+
+# Save unadjusted PERMANOVA result
+clr_unadjusted_table <- as.data.frame(
+  clr_unadjusted
+)
+
+clr_unadjusted_table$term <- row.names(
+  clr_unadjusted_table
+)
+
+write.csv(
+  clr_unadjusted_table,
+  file = file.path(
+    data_dir,
+    "clr_permanova_unadjusted.csv"
+  ),
+  row.names = FALSE
+)
+
+# Set seed for sequential PERMANOVA
+set.seed(123)
+
+# Run sequential PERMANOVA with farm entered first
+# Permutations are restricted within farm
 clr_permanova <- adonis2(
   clr_distance ~ farm_id + corral_type,
   data = clr_pcoa_df,
@@ -291,7 +320,7 @@ write.csv(
   clr_permanova_table,
   file = file.path(
     data_dir,
-    "clr_permanova_results.csv"
+    "clr_permanova_sequential.csv"
   ),
   row.names = FALSE
 )
@@ -300,7 +329,7 @@ write.csv(
 file.exists(
   file.path(
     data_dir,
-    "clr_permanova_results.csv"
+    "clr_permanova_sequential.csv"
   )
 )
 
@@ -312,7 +341,10 @@ clr_dispersion <- betadisper(
   bias.adjust = TRUE
 )
 
+
 # Run PERMDISP with permutations restricted within farm
+set.seed(123)
+
 clr_permdisp <- permutest(
   clr_dispersion,
   permutations = permute::how(
@@ -349,4 +381,3 @@ file.exists(
     "clr_permdisp_results.csv"
   )
 )
-
