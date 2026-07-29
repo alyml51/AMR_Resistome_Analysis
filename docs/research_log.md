@@ -1,28 +1,25 @@
 # Research Log
 
-This log records the development of my dissertation project from data organisation to final interpretation. It documents the main analyses, methodological decisions, troubleshooting, supervisor feedback and changes in interpretation. The purpose is to provide a concise and traceable record of how the project developed, including decisions that were later revised when the sampling structure or statistical assumptions were reassessed.
-
-The log is organised by project stage rather than by individual code change. Scripts, figures and statistical outputs are maintained in the GitHub repository so that each major result can be traced to the corresponding analysis step.
-
+This research log records the main work I completed during the project, including data organisation, analysis, troubleshooting, supervisor feedback and preparation of the GitHub repository. I organised the entries by date and project stage. The scripts, figures and documentation that can be shared are available in the repository, while the unpublished data and metadata are not included.
 
 ## 2026-05-10 - Initial data organisation
 
 ### Objective
 
-To organise the AMR abundance files and study metadata before starting the analysis.
+To organise the AMR feature reports and study metadata before starting the analysis.
 
 ### Work completed
 
-I reviewed the available abundance tables and metadata, and created separate folders for data, docs, figures, scripts, results and references.
+I reviewed the available files and created a project structure for scripts, data, figures, results, references and documentation. The input consisted of one TELCoMB AMR feature report per sample and a study-design workbook containing sample, farm and corral information.
 
 ### Outcome
 
-The project inputs and outputs were organised into a consistent folder structure. The next step was to understand the sample metadata and combine the individual abundance files.
-
+The project inputs and outputs were separated into consistent folders. The next step was to understand the study metadata and determine how the individual feature reports should be combined.
 
 ## 2026-05-13 - Understanding the study metadata
 
 ### Objective
+
 To understand the relationship between samples, farms and corrals.
 
 ### Problem
@@ -31,678 +28,714 @@ The meanings of `sample_name`, `farm_id`, `corral_id` and `corral_type` were ini
 
 ### Resolution
 
-I compared the study design spreadsheet with the abundance tables. I confirmed that C015-type identifiers were sample IDs, ARG03-type identifiers were farm IDs, and `corral_type` described whether samples came from healthy or sick corrals.
+I compared the study-design workbook with the sample feature reports. I confirmed that C015-type identifiers were sample IDs, ARG03-type identifiers were farm IDs, and `corral_type` described whether a sample came from a healthy or sick corral.
 
 ### Outcome
 
-I produced an initial composition plot and found that the detailed resistance annotations needed to be grouped before the plot could be displayed clearly.
+I confirmed that the study contained repeated sampling units at the farm level and that this structure would need to be considered in later statistical analyses.
 
-
-## 2026-05-19 - GitHub repository setup
+## 2026-05-19 - GitHub repository setup and analytical guidance
 
 ### Objective
 
-To set up a GitHub repository for version control and project organisation.
+To establish version control and document the sources used to develop the analytical workflow.
 
 ### Work completed
 
-I created the GitHub repository, added `.gitignore` and `.gitattributes`, and organised the project into scripts, figures, data, results and docs.
+I created the GitHub repository and added folders for scripts, figures and project documentation, together with `.gitignore` and `.gitattributes`.
 
-### Problem
+### Data-management issue
 
-At this stage I was unsure which project files should be tracked in the GitHub repository. I later relised that the raw research data should not be included in a public repository without supervisor approval.
+I initially needed to confirm which project materials could be stored publicly. The TELCoMB feature reports and study metadata form part of an unpublished project dataset and were therefore kept outside the public repository.
+
+### Supervisor guidance
+
+Dr Adam Blanchard recommended using a microbiome ecology framework and provided links to the `phyloseq` and `vegan` documentation and to resources explaining alpha-diversity metrics and Hill numbers. He also recommended considering Bray-Curtis dissimilarity, CLR/Aitchison analysis, PCoA, PERMANOVA and MaAsLin2.
 
 ### Code provenance
 
-The analysis scripts were written and organised by me using established R packages, including `tidyverse`, `vegan` and `MaAsLin2`. Package functions were used for standard statistical procedures, while the data processing workflow, metadata integration, resistance class grouping, model specification and figure generation were developed for this project. External documentation and published methods were consulted where necessary and are referenced in the scripts or dissertation.
+I developed the project-specific R workflow for this dissertation using documented functions from the recommended resources and the R packages cited in the dissertation. I used the recommended methods as a starting point, then developed and adjusted the data-processing, metadata, class-grouping, modelling and plotting steps for this dataset.
 
+### Outcome
 
-### Next step
+The repository was established as a record of the analysis code and permitted documentation. Restricted input data were retained locally.
 
-Keep scripts and permitted outputs under version control, and confirm with my supervisor which processed or statistical result files may be shared publicly.
-
-
-## 2026-05-25 to 2026-05-29 - Building the data merge pipeline
+## 2026-05-25 to 2026-05-29 - Building the data-merge pipeline
 
 ### Objective
 
-To combine the individual AMR feature files and study metadata into one analysis-ready table.
+To combine the individual TELCoMB AMR feature reports and study metadata into one analysis-ready table.
 
 ### Approach
 
-I created `01_merge_data.R` to import the sample-level CSV files, obtain sample identifiers, combine abundance records and join the study metadata. I added checks for sample names, missing metadata and duplicated records.
+I created `01_merge_data.R` to:
 
-### Problem
+- identify all sample-level AMR feature reports;
+- derive sample names from the filenames;
+- separate the `Statistics` field into feature and value fields;
+- separate resistance annotations into gene ID, type, class and description;
+- extract the feature-level read count;
+- combine the individual sample tables;
+- join the study metadata by sample name.
 
-Some fields contained several resistance annotations in one value. These needed to be separated before abundance could be summarised correctly.
+### Problems
+
+The input format contained several annotation components within one pipe-delimited field. The metadata workbook also contained repeated rows for some sample names.
 
 ### Resolution
 
-I converted the data into long format, with each row representing one resistance feature in one sample. The processed table contained one resistance feature per row together with the corresponding sample metadata.
-
-### Data management decision
-
-The processed analysis table was stored locally for downstream analysis, while only scripts and project documentation were maintained in the GitHub repository. 
+I converted the feature reports into long format, with each row representing one resistance annotation within one sample. Before joining the metadata, I retained one metadata record per sample name so that repeated metadata rows did not duplicate AMR observations.
 
 ### Validation
 
-Checked that:
-- sample names matched the study metadata;
-- no duplicated samples remained after merging;
-- missing metadata entries were identified before downstream analyses.
+I checked:
 
+- the number and names of the imported sample files;
+- whether abundance extraction introduced missing values;
+- whether farm and corral metadata joined correctly;
+- whether any sample lacked the required metadata;
+- whether the final processed table contained the expected farm samples and pristine-soil control.
 
-## 2026-06-02 to 2026-06-03 - Resistance class grouping and exploratory analysis
+### Outcome
+
+The merged table was saved locally as `data/resistance_split_processed.csv` for use by the downstream scripts.
+
+## 2026-06-02 to 2026-06-03 - Resistance-class grouping and exploratory analysis
 
 ### Question
 
-How should the detailed resistance annotations be grouped so that the composition plot is still readable but biologically meaningful?
+How should the detailed resistance annotations be grouped so that the composition analysis remained readable and biologically interpretable?
 
 ### Investigation
 
-I reviewed the detailed resistance categories and compared different grouping options. A plot using all 49 detailed categories was too fragmented and difficlut to interpret. I also considered whether low-abundance classes should br merged, and whether metal and biocide resistance should be kept separetely.
+The original feature reports contained 49 detailed resistance classes. A composition plot using all detailed classes was fragmented and difficult to interpret. I compared alternative grouping schemes and considered whether metal and biocide resistance should be combined or retained separately.
 
 ### Decision
 
-I grouped the detailed annotations into 13 broader resistance class groups. Major antimicrobial classes were kept separately, and metal and biocide resistance were also retained as sepaarte groups because they may be relevant to environmental selection in the farm setting. Categories that did not fit the main groups were assigned to `Other`.
+I grouped the detailed annotations into 13 broader resistance-class groups:
+
+- Aminoglycosides;
+- Beta-lactams;
+- Biocide resistance;
+- Fluoroquinolones;
+- Glycopeptides;
+- Metal resistance;
+- macrolide-lincosamide-streptogramin resistance (MLS);
+- Multi-drug resistance;
+- Other;
+- Phenicol;
+- Rifampin;
+- Sulfonamides/Trimethoprim;
+- Tetracyclines.
+
+Major antimicrobial classes were retained separately. Metal and biocide resistance were also retained as separate groups. Remaining low-abundance or heterogeneous categories were assigned to `Other`.
 
 ### Rationale
 
-This grouping made the composition plot easier to interpret while retaining the main biological patterns. The same grouped classification could also be used consistently for composition plots, diversity analysis and MaAsLin2. The grouping approach was discussed with and accepted by the supervisor.
+Grouping the original 49 classes into 13 made the composition plot easier to read while retaining the main resistance categories. I then used the same 13 groups in the later analyses so that the results were directly comparable.
 
-### Troubleshooting
+### Initial ordination decision
 
-I initially created a PCA script, but later changed to PCoA because the beta-diversity analysis was based on a dissimilarity matrix rather than the original variables.
+I first explored PCA, but changed to PCoA when the main beta-diversity analysis was defined using a dissimilarity matrix. This matched the ecological framework recommended by the supervisor.
 
 ### Outcome
 
-The 13 resistance class groups were used as the main class-level input for the downstream analysis.
+The 13 resistance-class groups became the main class-level input for all downstream analyses.
 
-
-## 2026-06-05 - First resistance class composition figure
+## 2026-06-05 - First resistance-class composition figure
 
 ### Objective
 
-To visualise how the mian resistance class groups contributed to the resistome profile of each farm sample.
+To visualise the relative composition of resistance classes in individual farm samples.
 
 ### Approach
 
-I summarised the abundance data by smaple and resistance class group, then converted the values to within-sample relative abundance. A stacked bar plot was produced to show the proportional contribution of the 13 resistance class groups across samples.
+Feature-level read counts were summed by sample and resistance-class group. The grouped counts were divided by the within-sample total to obtain relative abundance, and a stacked bar plot was produced.
 
 ### Problem
 
-The first version of the figure was difficult to interpret. The legend was crowded, some class labels were unclear, and the large number of samples made the axis text difficult to read. This made the plot unsuitable for dissertation presentation in its original form.
+The first version had a crowded legend, unclear labels and difficult-to-read sample names.
 
 ### Resolution
 
-I revised the plotting code by improving the class labels, adjusting the colour palette, ordering the samples more clearly, and exporting the figure in both PDF and PNG formats. I kept the plot at the grouped resistance-class level rather than returning to the full detailed annotation level, because the grouped version was more readable and better matched the downstream analyses.
+I improved the class labels and colour palette, ordered samples by farm and corral type, separated healthy and sick samples into facets, and exported the figure in PDF and PNG formats.
 
-### Interpretation
+### Initial observation
 
-The figure showed that resistome composition varied substantially between individual farm samples. Aminoglycoside-associated resistance and MLS resistance contributed strongly to many samples, while tetracycline, metal and biocide resistance showed more sample-specific patterns. This suggested that the main analysis should focus not only on individual high-abundance classes, but also on overall composition differences between samples and corral types.
-
-
-## 2026-06-07 to 2026-06-09 - Sample selection and PCoA development
-
-### Objective
-
-To ensure that the analysed samples matched the research question and to visualise between-sample compositional differences.
-
-### Data selection
-
-After checking the processed dataset, I confirmed that it contained 33 farm samples and one pristine soil control. Since the project aimed to compare resistome composition between farm corrals rather than enviromental backgrounds, the pristine soil control was excluded from all downstream statistical analyses.
-
-### Supervisor feedback
-
-One disease-associated category (S1) contained only a single sample. I discussed with my supervisor whether it should remain as an independent group or be merged with the S group. We agreed to combine S1 with S because both represented sick corrals and analysing S1 separately would provide little statistical value.
-
-### Approach
-
-Relative abundance profiles of the 13 resistance class groups were used to calculate Bray-Curtis dissimilarities. Principal Coordinates Analysis (PCoA) was then performed to visualise differences in resistome composition among farm samples.
-
-### Figure decision
-
-The first version of the PCoA plot contained sample labels and farm labels, making the figure difficult to interpret. After discussing the figure with my supervisor, I simplified the visualisation by removing individual labels and representing corral type using colour only. The revised figure was much clearer and more suitable for inclusion in the dissertation.
-
-### Reflection
-
-Although the PCoA suggested some separation between healthy and sick corrals, visual inspection alone was insufficient. Formal statistical tests would be required to determine whether the observed differences were significant.
-
-
-## 2026-06-09 - Initial alpha diversity analysis
-
-### Objective
-
-To compare within-sample resistance class diversity between healthy and sick corrals.
-
-### Approach
-
-I calculated Shannon diversity and inverse Simpson diversity for each sample and compared healthy and sick corrals using separate boxplots.
-
-### Limitation
-
-Although Shannon and inverse Simpson diversity captured different aspects of alpha diversity, the results were presented on differnet mathematical scales and were therefore less intuitive to compare and interpret.
-
-### Supervisor feedback
-
-After discussing the results with my supervisor, I decided to replace the traditional diversity indices with Hill number (q = 0, 1, and 2). Hill number express diversity as the effective number of resistance classes and provide a more interpretable framework for comparing alpha diversity.
-
-### Reflection
-
-This change required rewriting the alpha diversity analysis but produced figures that were easier to interpret and more consistent with current ecological diversity analysis.
-
-
-## 2026-06-18 - Figure optimisation for exploratory analysis
-
-### Objective
-
-To improve the readability of the resistance composition and PCoA figures before proceeding to downstream statistical analyses.
-
-### Problem
-
-The initial figures were difficult to interpret because of crowded legends, overlapping labels and inconsistent formatting between different plots.
-
-### Changes
-
-I simplified the composition plot by separeting healthy and sick samples into facets, reducing unnecessary labels and improving axis formatting. The PCoA figure was also simplified by removing individual sample labels while retaining corral type as the main visual grouping.
+The relative composition of resistance classes varied among samples. MLS, aminoglycoside and tetracycline resistance contributed substantially to many profiles, while several lower-abundance groups showed more sample-specific patterns.
 
 ### Outcome
 
-The figures became easier to compare and more suitable for dissertation presentation. PDF versions were retained for insertion into the dissertation, with PNG versions used for checking and sharing.
+The revised stacked bar plot became the basis of dissertation Figure 1.
 
-### Reflection 
-
-Improving the figures at this stage made subsequent interpretation much easier and helped identify which statistical analyses were still required.
-
-
-## 2026-06-21 - PERMANOVA and PERMDISP
+## 2026-06-07 to 2026-06-09 - Sample selection and Bray-Curtis PCoA development
 
 ### Objective
 
-To formally test whether overall resistome composition differed between healthy and sick corrals.
+To define the analysis set and visualise between-sample differences in the relative composition of resistance classes.
+
+### Data selection
+
+The processed dataset contained 33 farm samples and one pristine-soil control. Because the research question concerned differences between farm corrals, the pristine-soil control was excluded from comparisons between corral types.
+
+### Corral-type decision
+
+One sick-corral label was recorded as S1. After discussion with the supervisor, S1 was combined with S because both represented sick corrals and a one-sample category would not support a separate comparison.
 
 ### Approach
 
-PERMANOVA was applied to the Bray-Curtis distance matrix with corral type as the explanatory variable. PERMDISP was used to test whether any PERMANOVA result could be explained by unequal within-group dispersion.
+Bray-Curtis dissimilarities were calculated from sample-level relative abundances of the 13 resistance-class groups. PCoA was then used to visualise the relationships among the 33 farm samples.
 
-### Results
+### Figure decision
 
-PERMANOVA indicated that corral type explained approximately 13% of the variation in resistance class composition (R<sup>2</sup> = 0.130, p = 0.018). PERMDISP was not significant (p = 0.552), indicating that within-group dispersion did not differ between corral types.
+The first PCoA included sample and farm labels and was visually crowded. Following supervisor feedback, I removed the individual labels and used colour to distinguish healthy and sick corrals.
 
 ### Reflection
 
-The PERMDISP result increased my confidence that the PERMANOVA result reflected differences in resistome composition rather than differences in within-group variability. However, corral type explained only a reletively small proportion of the total variation (R<sup>2</sup> = 0.130), suggesting that farm-specific conditions, management practices or other environmental factors may also influence resistome composition.
+The unadjusted ordination showed partial separation between corral types, but visual separation alone could not establish a statistically supported group effect.
 
-
-## 2026-06-22 to 2026-06-23 - Hill number diversity analysis
-
-### Objective
-
-To compare resistance class richness, evenness and dominance between corral types.
-
-### Approach
-
-Following supervisor feedback, I replaced the original Shannon and inverse Simpson analysis with Hill numbers so that richness (q = 0), Shannon diversity (q = 1) and Simpson diversity (q = 2) could be interpreted within a single framework. Wilcoxon rank-sum tests were then used to compare healthy and sick corrals.
-
-### Initial results
-
-The median q = 0 value was similar between H and S, whereas q = 1 and q = 2 tended to be higher in S. Before multiple testing correction, q = 1 and q = 2 showed nominal significance, while q = 0 did not.
-
-### Interpretation
-
-Hill numbers provided a more intuitive way to compare diversity than reporting Shannon and inverse Simpson separately. Although q = 1 and q = 2 appeared higher in S before correction, these differences became less convincing after adjustment for multiple testing. This reinforced the decision to present Hill numbers as descriptive evidence rather than strong statistical findings.
-
-
-## 2026-06-23 to 2026-06-24 - MaAsLin2 association analysis
+## 2026-06-09 - Initial alpha-diversity analysis
 
 ### Objective
 
-To test whether individual resistance class groups were associated with corral type while considering farm-level structure.
+To compare within-sample resistance-class diversity between healthy and sick corrals.
 
-### Approach
+### Initial approach
 
-I used MaAsLin2 with corral type as a fixed effect and farm ID as a random effect to account for the study design. H was used as the reference group so that coefficient represented changes relative to healthy corrals. A coefficient plot was created to visualise the direction and magnitude of the estimated effects.
+I calculated Shannon and inverse Simpson diversity and displayed them in separate boxplots.
 
-### Results
+### Limitation
 
-After false discovery rate correction, no resistance class remained statistically significant. Before correction, tetracycline and metal resistance showed the strongest positive coefficients in S, whereas several other classes showed negative coefficients relative to H.
+The indices were expressed on different mathematical scales and were less intuitive to compare directly.
 
-### Interpretation
+### Supervisor guidance
 
-The MaAsLin2 results suggested that the overall PERMANOVA signal was likely driven by modest changes across multiple resistance classes rather than a single dominant class. Although no individual association remained significant after multiple testing correction, the coefficient plot provided a useful summary of the direction and relative magnitude of the observed trends. The supervisor responded positively to this visualisation and agreed that it was suitable for inclusion in the dissertation.
-
-
-## 2026-06-24 - Multiple-testing correction for Hill numbers
-
-### Reason for additional check
-
-Three related Hill number comparisons had been performed. Reporting only the unadjusted p-values could increase the risk of over-interpreting the results.
-
-### Approach
-
-I applied Benjamini-Hochberg correction across the q0, q1 and q2 Wilcoxon tests.
-
-### Results
-
-The adjusted p-value was 0.170 for q = 0 and 0.069 for both q = 1 and q = 2. Therefore, neither q = 1 nor q = 2 remained statistically significant after correction.
-
-### Interpretation
-
-Although S samples showed higher median q = 1 and q = 2 values, the evidence was not statistically significant after multiple-testing correction. I decided to report both the original and adjusted p-values so that the results could be interpreted transparently.
-
-
-## 2026-06-24 - Supervisor feedback and CLR/Aitchison analysis decision
-
-### Feedback
-
-The supervisor said that the current figures looked good and particularly liked the MaAsLin2 coefficient plot. He recommended adding a CLR-based analysis because resistome read counts are compositional.
-
-### Analytical issue
-
-After reading about compositional data analysis, I realised that Bray-Curtis and CLR-based approaches emphasise different properties of the data. Because CLR transformation requires positive values, an additional zero-replacement step would also be needed before the analysis.
+Dr Adam Blanchard recommended using Hill numbers because q = 0, q = 1 and q = 2 can be interpreted as effective numbers of resistance classes within one framework.
 
 ### Decision
 
-I decided to keep the original Bray-Curtis workflow and build a separate CLR/Aitchison workflow instead of replacing the existing analysis. This would allow both approaches to be compared while keeping the original results unchanged.
+I replaced the original presentation with Hill numbers:
 
-### Next step
+- q = 0 for observed class richness;
+- q = 1 for exponential Shannon diversity;
+- q = 2 for inverse Simpson diversity.
 
-Develop and validate the CLR/Aitchison workflow before deciding whether it should replace or complement the existing Bray-Curtis analysis.
+### Outcome
 
+The alpha-diversity workflow was revised to use Hill numbers consistently.
+
+## 2026-06-18 - Figure optimisation
+
+### Objective
+
+To improve the clarity and consistency of the exploratory figures before formal statistical testing.
+
+### Changes
+
+I:
+
+- separated healthy and sick samples in the composition plot;
+- removed unnecessary labels from the PCoA;
+- standardised the healthy and sick colour scheme;
+- improved axis text, legend text and figure dimensions;
+- retained PDF outputs for the dissertation and PNG outputs for checking and sharing.
+
+### Outcome
+
+The figures were clearer and provided a consistent basis for the subsequent Results section.
+
+## 2026-06-21 - Initial Bray-Curtis PERMANOVA and PERMDISP
+
+### Objective
+
+To test whether the relative composition of resistance classes differed between healthy and sick corrals in the full sample set.
+
+### Approach
+
+I applied an unrestricted PERMANOVA to the Bray-Curtis distance matrix with corral type as the explanatory variable. I also used PERMDISP to examine whether group dispersion differed.
+
+### Initial result
+
+The unrestricted model suggested an association between corral type and Bray-Curtis composition. At this stage, the model had not yet accounted fully for the farm-level sampling structure.
+
+### Interpretation at this stage
+
+Because this model had not accounted for farm, I treated the result as preliminary and checked it again using restricted and farm-adjusted analyses. Farm identity was a possible source of confounding because only seven farms contained both healthy and sick samples.
+
+### Outcome
+
+The unrestricted analysis was retained as a description of the overall sample pattern, with farm-adjusted checks planned before final interpretation.
+
+## 2026-06-22 to 2026-06-23 - Hill-number analysis and multiple-testing correction
+
+### Objective
+
+To compare resistance-class richness and effective diversity between corral types.
+
+### Approach
+
+Hill q = 0, q = 1 and q = 2 were calculated from the sample-by-class abundance matrix. Healthy and sick samples were compared using two-sided Wilcoxon rank-sum tests. Benjamini-Hochberg correction was applied across the three tests.
+
+### Results
+
+The median q = 0 value was 13 in both groups. The unadjusted p-values were 0.170 for q = 0, 0.046 for q = 1 and 0.025 for q = 2. After Benjamini-Hochberg correction, the adjusted p-values were 0.170, 0.069 and 0.069, respectively.
+
+### Interpretation
+
+Effective diversity was directionally higher in the sick-corral group for q = 1 and q = 2, but none of the three comparisons remained statistically significant after correction.
+
+### Outcome
+
+Both unadjusted and adjusted p-values were retained for transparent reporting, with the adjusted results used for the final statistical conclusion.
+
+## 2026-06-23 to 2026-06-24 - MaAsLin2 class-level association analysis
+
+### Objective
+
+To test whether individual resistance-class groups were associated with corral type while considering farm-level structure.
+
+### Approach
+
+I used MaAsLin2 with corral type as a fixed effect, farm ID as a random effect and healthy corrals as the reference category. Total-sum scaling and log transformation were applied within MaAsLin2. The resulting coefficients were displayed in a coefficient plot.
+
+### Results
+
+No resistance-class group remained statistically significant after Benjamini-Hochberg correction. Metal and tetracycline resistance had the largest positive coefficients, while aminoglycoside and MLS resistance had negative coefficients.
+
+### Interpretation
+
+The coefficients described the direction of the fitted associations but did not provide evidence of statistically supported differences between corral types.
+
+### Supervisor feedback
+
+The supervisor considered the coefficient plot clear and suitable for the dissertation.
+
+### Outcome
+
+The coefficient plot became dissertation Figure 4.
+
+## 2026-06-24 - Decision to add CLR/Aitchison analysis
+
+### Supervisor guidance
+
+The supervisor recommended adding a CLR-based analysis because the resistance-class counts were compositional.
+
+### Analytical issue
+
+CLR transformation cannot be applied directly to a matrix containing zeros. A zero-replacement step was therefore required before transformation.
+
+### Decision
+
+I retained the Bray-Curtis workflow and developed a separate CLR/Aitchison workflow. I kept both approaches because they represent the compositional data differently. I wanted to check whether they led to the same conclusion.
 
 ## 2026-06-25 to 2026-06-27 - CLR/Aitchison workflow implementation
 
 ### Objective
 
-To implement the CLR-based compositional workflow recommended by the supervisor and compare it with the existing Bray-Curtis analysis.
-
-### Analytical issue
-
-CLR transformation cannot be applied directly when zero values are present. I therefore reviewed approaches for handling zeros in compositional data before performing the transformation.
+To implement a compositional beta-diversity analysis.
 
 ### Approach
 
-Zero values were replaced using multiplicative replacement before applying the centred log-ratio transformation. Euclidean distances were then calculated on the CLR-transformed data to generate an Aitchison distance matrix, followed by PCoA.
+I:
+
+- created a sample-by-class count matrix;
+- replaced zeros using the count zero multiplicative method;
+- applied the centred log-ratio transformation;
+- calculated Euclidean distances from the CLR-transformed matrix;
+- treated these as Aitchison distances;
+- performed PCoA.
 
 ### Troubleshooting
 
-During implementation, some functions produced unexpected errors because of namespace conflicts between R packages. Explicitly calling `dplyr::select()` resolved the problem and improved the reproducibility of the script.
+Some package functions had overlapping names. Explicit calls such as `dplyr::select()` were added to avoid namespace conflicts.
 
 ### Outcome
-The CLR/Aitchison workflow was completed successfully and produced a second beta-diversity analysis that could be compared directly with the original Bray-Curtis results.
 
+The CLR/Aitchison workflow ran successfully and produced an ordination that could be compared with the Bray-Curtis PCoA.
 
-## 2026-06-28 to 2026-06-29 - CLR-based beta diversity analysis
+## 2026-06-28 to 2026-06-29 - Initial CLR/Aitchison statistical analysis
 
 ### Objective
 
-To evaluate whether the CLR/Aitchison workflow produced similar conclusions to the original Bray-Curtis analysis.
+To assess whether the unadjusted CLR/Aitchison analysis supported the same corral-type pattern as the Bray-Curtis analysis.
 
 ### Approach
 
-After generating the Aitchison distance matrix and CLR-based PCoA, I applied PERMANOVA using corral type as the explanatory variable. I also performed PERMDISP to verify that any observed differences were not caused by unequal within-group dispersion.
+An unrestricted PERMANOVA and a dispersion check were applied to the Aitchison distance matrix.
 
-### Results
+### Initial result
 
-The CLR-based PERMANOVA was not statistically significant (R<sup>2</sup> = 0.049, p = 0.151). PERMDISP was also not significant (p = 0.769), indicating that dispersion did not differ between healthy and sick corrals.
+The unadjusted CLR/Aitchison PERMANOVA did not support a statistically significant corral-type effect. This differed from the initial unrestricted Bray-Curtis result.
 
 ### Interpretation
 
-Compared with the original Bray-Curtis analysis, the CLR-based workflow showed weaker evidence for differences between corral types. This suggested that the statistical conclusion depended partly on the choice of distance metric, highlighting the importance of reporting both analyses rather than relying on a single method.
+Because Bray-Curtis and CLR/Aitchison gave different unadjusted results, I did not treat the Bray-Curtis result as final. I kept both analyses and checked whether the pattern remained after accounting for farm.
 
-
-## 2026-06-29 to 2026-07-01 - Figure standardisation
+## 2026-06-29 to 2026-07-01 - Figure standardisation and combination
 
 ### Objective
 
-To standardise all dissertation figures before writing the Results section.
+To standardise the dissertation figures and reduce the number of separate figures.
 
 ### Changes
 
-I reviewed every figure produced during the analysis and applied a consistent visual style across the dissertation. Colours representing healthy (H) and sick (S) corrals were standardised, figure fonts and axis formatting were made consistent, and legends were simplified where necessary. Several figures were also rearranged to improve readability and ensure a consistent layout throughout the Results section. All figures were regenerated and exported in both PNG and PDF formats.
-
-### Rationale
-
-Although the statistical results did not change, presenting figures in a consistent format improves readability and makes comparisons between different analyses easier for the reader.
+I applied consistent colours, fonts, axis formatting and legends across all plots. The Bray-Curtis and CLR/Aitchison PCoA plots were combined as Figure 2, and the three Hill-number plots were combined as Figure 3 using `patchwork`.
 
 ### Outcome
 
-The resistance composition plots, Hill number plots, MaAsLin2 coefficient plot, Bray-Curtis PCoA and CLR/Aitchison PCoA all followed the same visual style and were ready for inclusion in the dissertation.
+The main analysis was represented by four figures at this stage:
 
+1. resistance-class composition;
+2. Bray-Curtis and CLR/Aitchison PCoA;
+3. Hill-number alpha diversity;
+4. MaAsLin2 coefficients.
 
-## 2026-07-01 - Preparing the final analysis set
-
-### Objective
-
-To review all completed analyses and decide which figures and statistical results would be included in the dissertation.
-
-### Review
-
-I compared the outputs from the Bray-Curtis and CLR/Aitchison workflows together with the Hill number and MaAsLin2 analyses. The aim was to ensure that each figure addressed a different research question and that the overall analysis remained coherent.
-
-### Decision
-
-The Bray-Curtis analysis was retained as the primary beta-diversity analysis because it was consistent with the original analysis plan and showed a significant association between corral type and resistome composition. The CLR analysis was retained as a complementary analysis to demonstrate that an alternative compositional approach had also been evaluated.
-
-### Outcome
-
-At this stage, all planned statistical analyses and dissertation figures had been completed. The project was ready to move from analysis to writing.
-
-
-## 2026-07-02 - Final reproducibility check
+## 2026-07-02 - Reproducibility check before writing
 
 ### Objective
 
-To verify that the complete analysis pipeline could be reproduced from a clean R session before writing the dissertation.
+To rerun the analysis workflow from a clean R session before drafting the dissertation.
 
 ### Procedure
 
-I cleared the R environment and reran the complete workflow from the raw processed data, including diversity analyses, beta-diversity analyses, statistical tests and figure generation.
+I cleared the R environment and reran the scripts in order. I checked the processed table, sample counts, figures and exported statistical tables.
 
 ### Troubleshooting
 
-During the rerun, `select()` produced an unexpected error because another loaded package masked the dplyr function. I resolved the issue by explicitly using `dplyr::select()` throughout the script to remove the namespace conflict.
-
-### Validation
-
-After correcting the function calls, all analyses completed successfully. The statistical outputs, figures, PDF files and exported CSV tables were regenerated without manual intervention and matched the previous results.
+Namespace conflicts involving `select()` were resolved by using `dplyr::select()` explicitly.
 
 ### Outcome
 
-The complete workflow was confirmed to be reproducible from a fresh R session. This also improved the robustness and portability of the analysis scripts before dissertation writing.
+The workflow reproduced the figures and statistical outputs from the locally available restricted inputs. I used the outputs from this rerun for the first dissertation draft.
 
-
-## 2026-07-03 - Transition to dissertation writing
+## 2026-07-03 to 2026-07-08 - First complete Results and Discussion draft
 
 ### Objective
 
-To prepare the completed analysis outputs for writing the dissertation Results section.
+To convert the completed analyses into a coherent dissertation draft.
 
-### Review
+### Work completed
 
-I reviewed the final figures, statistical outputs and research log to ensure that the analysis workflow was complete and that each result could be traced back to the corresponding script and output file.
+I drafted the Methods and Results for:
 
-### Outcome
+- resistance-class processing and relative abundance;
+- Bray-Curtis and CLR/Aitchison PCoA;
+- PERMANOVA and PERMDISP;
+- Hill-number alpha diversity;
+- MaAsLin2 class-level associations.
 
-All planned analyses had been completed, including resistance class composition, alpha diversity, Bray-Curtis PCoA, CLR/Aitchison PCoA, PERMANOVA, PERMDISP and MaAsLin2. The project was ready to move from analysis to interpretation, literature review and dissertation writing.
+I then drafted the Discussion around the question of whether healthy and sick corrals represented different resistome environments.
 
-### Next step
+### Statistical cross-check
 
-Begin drafting the Results section and identify supporting literature for the Methods and Discussion sections.
+While reviewing the draft, I recognised that the unrestricted comparisons did not fully resolve the non-independence of samples from the same farm. The initial Results and Discussion therefore remained provisional.
 
+### Preliminary clinical ARG exploration
 
-## 2026-07-04 - Farm-adjusted statistical analysis
-
-### Objective
-
-To evaluate whether the apparent differences between healthy and sick corrals remained after accounting for farm-level structure and sample non-independence.
-
-### Review
-
-Re-examined the beta-diversity analyses after considering the hierarchical sampling design. PERMANOVA was repeated using restricted permutations within farms, and sequential models were fitted to separate farm effects from corral-type effects. PERMDISP was also performed to determine whether any observed separation reflected differences in within-group dispersion rather than compositional structure.
+I also began identifying clinically relevant low-abundance ARG families that were not visible in the broad resistance-class summaries. This exploratory step informed the later targeted analysis but was not yet treated as a final result.
 
 ### Outcome
 
-The farm-adjusted analyses showed that farm explained most of the variation in resistome composition, whereas corral type contributed only a small additional proportion. The apparent separation between healthy and sick corrals observed in the unrestricted analysis was not supported after accounting for farm. The non-significant PERMDISP result indicated that differences in dispersion were unlikely to explain the observed ordination patterns.
-
-### Next step
-
-Update the Results and Discussion sections to reflect the revised statistical interpretation.
-
-
-## 2026-07-05 - Revision of Results section
-
-### Objective
-
-To revise the Results section so that all statistical interpretations were consistent with the updated analyses.
-
-### Review
-
-I rewrote the beta-diversity, alpha-diversity and resistance class association sections using the farm-adjusted statistical results. Figures, statistical outputs and corresponding text were reviewed together to ensure that all reported interpretations were supported by the final analyses.
-
-### Outcome
-
-The Results section consistently reflected the revised statistical framework. Statements implying a robust corral-type effect were removed where they were no longer supported, and the descriptions of the statistical analyses were aligned with the final outputs.
-
-### Next step
-
-Revise the Discussion to ensure that the biological interpretation remained consistent with the updated Results.
-
-
-## 2026-07-06 - Discussion development
-
-### Objective
-
-To develop a coherent Discussion based on the revised statistical analyses.
-
-### Review
-
-I reorganised the Discussion around the main research question of whether healthy and sick corrals represented different resistome environments. Each subsection was revised to distinguish relative abundance from absolute resistance burden, association from causation, and statistically supported findings from directional trends. Comparisons with previous livestock resistome studies were refined to explain similarities and differences without extending beyond the available evidence.
-
-### Outcome
-
-A complete revised Discussion was produced with a consistent interpretation across all analytical sections and clearer links between the Results and previous literature.
-
-### Next step
-
-Extend the analyses of clinically relevant low-abundance ARG families and integrate the findings into the dissertation.
-
-
-## 2026-07-07 - Clinical ARG analysis
-
-### Objective
-
-To investigate clinically relevant low-abundance antimicrobial resistance gene families that were not apparent in the resistance class analyses.
-
-### Review
-
-I performed descriptive analyses of selected carbapenem-associated metallo-β-lactamase families and rifampin-associated resistance families. Detection frequencies and sample-level heatmaps were generated to summarise their distribution across healthy and sick corrals. ARG families requiring SNP confirmation were excluded from interpretation.
-
-### Outcome
-
-The clinically relevant ARG families were detected at low relative abundance in both healthy and sick corrals. These analyses provided descriptive evidence for surveillance purposes but did not indicate statistically supported differences between corral types.
-
-### Next step
-
-Integrate the clinical ARG analyses into the Results and Discussion sections.
-
-
-## 2026-07-08 - Final dissertation revision
-
-### Objective
-
-To complete the final scientific revision of the dissertation following supervisor feedback.
-
-### Review
-
-I revised the statistical interpretation throughout the dissertation and refined the Discussion to improve consistency between the Results and previous literature. Terminology, figure captions and language were standardised, and repetitive or overly cautious wording was reduced while ensuring that all conclusions remained supported by the statistical evidence.
-
-### Outcome
-
-The dissertation reached a complete draft with consistent Methods, Results and Discussion sections. All figures, statistical analyses and written interpretations were aligned with the final analytical framework.
-
-### Next step
-
-Carry out final proofreading, formatting checks and prepare the dissertation for submission.
-
+I completed the first full draft, but it still needed revision after the farm-adjusted and targeted ARG analyses were finalised.
 
 ## 2026-07-09 to 2026-07-13 - Restructuring the Discussion using the literature
 
 ### Aim
 
-To revise the Discussion so that the results were compared directly with relevant cattle AMR and resistome studies rather than discussed in isolation.
+To compare the findings directly with relevant cattle AMR and resistome studies rather than discuss each result in isolation.
 
 ### Literature review
 
-I revisited the papers recommended by the supervisor, with particular attention to how their Discussion sections were constructed. Garzon et al. (2025) was especially useful because it compared cattle pens with different health and management functions. Bedford et al. (2024) provided context for antimicrobial use and treatment decisions in Argentine beef production, while Ali et al. (2025) showed that cattle AMR patterns are influenced by several animal-, farm- and management-related factors.
+I revisited the papers recommended by the supervisor. Garzon et al. (2025) provided a comparison with cattle pens of different functions. Bedford et al. (2024) provided context for antimicrobial use and management in Argentine beef production. Ali et al. (2025) showed that cattle AMR patterns can reflect multiple animal, farm and management factors.
 
 ### Revision strategy
 
-The Discussion was reorganised so that each subsection addressed a specific part of the main question:
+The Discussion was reorganised around four questions:
 
-- whether overall resistome composition differed between corral types;
-- whether any difference involved resistance class diversity;
-- whether a single resistance class explained the pattern;
-- what limitations prevented causal interpretation.
-
-Literature was used to compare specific findings rather than only stating that the results were “consistent with” previous studies.
+1. Did overall resistome composition differ between corral types?
+2. Did resistance-class diversity differ?
+3. Did any individual resistance class explain the pattern?
+4. What aspects of the study design limited interpretation?
 
 ### Outcome
 
-The revised Discussion developed a clearer argument. Healthy and sick corrals shared the same dominant resistance categories, while the initial analyses suggested possible differences in their proportional composition. Alpha diversity and class-level associations provided weaker evidence, which prevented a simple conclusion that sick corrals carried a greater AMR burden.
+The revised draft distinguished relative composition from absolute AMR burden and avoided interpreting directional estimates as confirmed group differences.
 
 ### Reflection
 
-This revision changed my understanding of the purpose of a Discussion section. The main task was not to repeat the statistical results, but to explain how the different analyses contributed to one interpretation and where that interpretation remained uncertain.
+I realised that the Discussion needed to connect the different analyses instead of repeating the Results section by section.
 
-
-## 2026-07-14 to 2026-07-16 - Reassessment of farm structure and sample independence
+## 2026-07-14 to 2026-07-15 - Reassessment of farm structure and sample independence
 
 ### Reason for reassessment
 
-The samples were collected from 26 farms, but only seven farms contained both healthy and sick corral samples. This raised the possibility that the apparent corral-type separation in the original analysis was partly influenced by differences among farms.
-
-The original Bray-Curtis PERMANOVA had treated corral type as the main explanatory variable without fully separating it from farm background. I therefore revisited the sampling design and the supervisor's earlier advice regarding non-independence among samples from the same sampling unit.
+The 33 farm samples came from 26 farms, and only seven farms contained both healthy and sick corrals. The original unrestricted comparison could therefore reflect differences among farms as well as differences between corral types.
 
 ### Analytical changes
 
-I fitted sequential PERMANOVA models in which farm was entered before corral type. This allowed the additional variation associated with corral type to be assessed after farm-level variation had been considered.
+For the Bray-Curtis analysis, I:
 
-The same procedure was applied to both Bray-Curtis and CLR/Aitchison distances. PERMDISP was repeated for both distance measures to test whether differences in multivariate dispersion could explain the ordination patterns.
+- retained the unrestricted corral-type PERMANOVA;
+- repeated the corral-type test with permutations restricted within farm;
+- fitted a sequential PERMANOVA with farm entered before corral type.
 
-### Results
+For both Bray-Curtis and CLR/Aitchison distances, I fitted sequential farm-first models and repeated PERMDISP with permutations restricted within farm.
 
-In the sequential models, farm accounted for 67.8% of the Bray-Curtis variation and 71.0% of the CLR/Aitchison variation before corral type was entered. These percentages depend on term order and were therefore treated as sequential model components rather than causal estimates.
+### Final beta-diversity results
 
-After farm was included, corral type explained only a further 2.1% of the Bray-Curtis variation (R² = 0.021, F = 0.42, p = 0.859) and 2.8% of the CLR/Aitchison variation (R² = 0.028, F = 0.64, p = 0.719). Neither effect was statistically significant.
+In the unrestricted Bray-Curtis model, corral type explained 13.0% of the variation (R² = 0.130, F = 4.63, p = 0.012). With permutations restricted within farm, the p-value was 0.336.
 
-Multivariate dispersion also did not differ between corral types for either Bray-Curtis (F = 0.55, p = 0.688) or CLR/Aitchison distances (F = 0.23, p = 0.688).
+In the unrestricted CLR/Aitchison model, corral type explained 4.9% of the variation (R² = 0.049, F = 1.58, p = 0.145).
+
+In the sequential models, farm accounted for 67.8% of the Bray-Curtis variation and 71.0% of the CLR/Aitchison variation before corral type was entered. These percentages depend on term order and were treated as sequential model components rather than causal estimates.
+
+After farm was entered, corral type explained a further 2.1% of the Bray-Curtis variation (R² = 0.021, F = 0.42, p = 0.859) and 2.8% of the CLR/Aitchison variation (R² = 0.028, F = 0.64, p = 0.719).
+
+PERMDISP was not significant for either Bray-Curtis (F = 0.55, p = 0.688) or CLR/Aitchison distances (F = 0.23, p = 0.688).
 
 ### Interpretation
 
-The visual separation in the unadjusted ordinations did not persist after farm was considered. The analyses therefore provided little evidence for a corral-type pattern that was reproduced independently across farms.
-
-This required a substantial change to the original interpretation. The unrestricted PERMANOVA result could no longer be presented as evidence that corral type independently explained a significant proportion of resistome variation.
+The unadjusted ordinations showed partial separation, but this did not persist as a statistically supported corral-type effect after farm-level structure was considered. After farm adjustment, both methods led to the same conclusion, so the result was not specific to one distance measure.
 
 ### Research decision
 
-The Results and Discussion were revised so that farm-level heterogeneity became central to the interpretation. The conclusion was changed from a modest corral-type effect to an absence of a consistent farm-independent difference between healthy and sick corrals.
-
+I revised the Results and Discussion to make the effect of farm-level variation clearer. The unrestricted Bray-Curtis result was retained as an unadjusted sample-level pattern and was not presented as evidence of an independent corral-type effect.
 
 ## 2026-07-15 to 2026-07-16 - Within-farm alpha-diversity comparisons
 
 ### Question
 
-Were the higher Hill q = 1 and q = 2 values observed in the full sick-corral group reproduced when healthy and sick samples were compared within the same farms?
+Were the higher q = 1 and q = 2 values in the full sick-corral group reproduced when healthy and sick samples were compared within the same farms?
 
 ### Approach
 
-The seven farms containing both healthy and sick corrals were analysed as paired observations. Paired comparisons were performed for Hill q = 0, q = 1 and q = 2, followed by multiple-testing correction.
+The seven farms represented by both corral types were analysed as paired observations. Two-sided Wilcoxon signed-rank tests were performed for q = 0, q = 1 and q = 2, followed by Benjamini-Hochberg correction.
 
 ### Results
 
-None of the three Hill numbers differed significantly between paired healthy and sick samples. All adjusted p-values were at least 0.673, and the direction of the healthy-sick difference varied among farms.
+The unadjusted paired p-values were 0.423, 0.673 and 0.673 for q = 0, q = 1 and q = 2. The adjusted p-value was 0.673 for all three Hill numbers. The direction of the healthy-sick difference was not consistent among the seven farms.
 
 ### Interpretation
 
-The higher q = 1 and q = 2 values observed in the full sick-corral group were not consistently reproduced within farms. This indicated that the initial directional pattern may have reflected the unbalanced farm composition of the two groups rather than a general corral-type effect.
+The directional q = 1 and q = 2 pattern observed in the full dataset was not reproduced consistently within farms.
 
 ### Outcome
 
-The paired analysis was added as a sensitivity analysis. The Discussion was revised to state that alpha diversity did not differ consistently between healthy and sick corrals, either in the full analysis after correction or in the within-farm comparisons.
+The paired analysis was added as a sensitivity analysis, and the final conclusion stated that alpha diversity did not differ consistently between corral types.
 
-
-## 2026-07-16 to 2026-07-17 - Analysis of clinically relevant low-abundance ARG families
+## 2026-07-16 to 2026-07-17 - Targeted analysis of clinically relevant low-abundance ARG families
 
 ### Motivation
 
-The main analysis grouped resistance features into 13 broad categories. This was appropriate for comparing overall resistome structure but could obscure individual low-abundance ARG families with clinical relevance.
+The 13 resistance-class groups were suitable for overall composition analysis but could obscure individual low-abundance ARG families of clinical relevance.
 
-### Selection of ARG families
+### Selection and processing
 
-I examined selected rifampin-associated families (RPH and ARR) and carbapenem-associated metallo-β-lactamase families (IMP, SPM and KHM). Features whose interpretation depended on SNP confirmation were excluded.
+I examined:
+
+- the rifampin-associated families RPH and ARR;
+- the carbapenem-associated metallo-β-lactamase families IMP, SPM and KHM.
+
+ARG assignments marked as requiring SNP confirmation were excluded from this targeted analysis. Feature-level counts were summed by sample and ARG family, divided by the within-sample total AMR feature count and multiplied by 100.
 
 ### Visualisation
 
-Two complementary figures were produced:
+I created:
 
-- a sample-level heatmap showing the relative abundance of each selected ARG family;
-- a detection-frequency plot showing the percentage of healthy and sick samples in which each family was detected.
+- a detection plot showing the percentage and number of samples with each family;
+- a sample-level heatmap of relative abundance using a square-root-transformed colour scale.
 
-The heatmap was used to show variation among individual samples, while the detection plot summarised the group-level distribution.
+These panels were combined as dissertation Figure 5.
 
-### Findings
+### Results
 
-RPH and IMP were the most widely distributed selected families and were detected in both healthy and sick corrals. ARR, SPM and KHM were detected less frequently, and some occurred only in healthy-corral samples.
+RPH was detected in 18 samples across 16 farms, including 15 of 25 healthy-corral samples and three of eight sick-corral samples. IMP was detected in 17 samples across 17 farms, including 14 healthy and three sick samples. SPM was detected in five healthy and two sick samples. KHM was detected in seven healthy samples and ARR in two healthy samples; neither was detected in the eight sick samples.
 
-The selected families were present at very low relative abundance. Their distribution was therefore interpreted descriptively and was not treated as evidence of a difference in prevalence between corral types, particularly because only eight sick-corral samples were available.
+Across positive detections, relative abundance ranged from 0.0004% to 0.1308% of total AMR abundance. No selected family exceeded 0.14% in any sample.
 
 ### Interpretation
 
-These ARG families did not explain the broad class-level resistome patterns. Their value was instead related to surveillance, because low-abundance resistance determinants associated with rifampin or carbapenem resistance may remain clinically relevant even when they contribute little to total relative abundance.
+The unequal group sizes meant that healthy-only detections were treated descriptively and were not interpreted as evidence of different prevalence. The selected families contributed very little to total AMR abundance. I therefore reported them as low-abundance detections rather than as major components of the resistome or confirmed differences between corral types.
 
-The available feature-count data did not retain read- or contig-level genomic context. It was therefore not possible to determine bacterial host identity, physical linkage to mobile genetic elements or mobilisation potential.
+### Limitation
 
+Individual low-abundance assignments were not independently validated at read level in this secondary analysis. The available analysis also did not establish gene expression, bacterial host identity or horizontal-transfer potential.
 
-## 2026-07-17 to 2026-07-18 - Revision of the Discussion after the corrected analyses
+## 2026-07-17 to 2026-07-18 - Revision after the corrected analyses
 
 ### Main change
 
-The Discussion was rewritten to reflect the farm-adjusted beta-diversity results and the paired alpha-diversity analysis.
+The Results and Discussion were rewritten to reflect the farm-adjusted beta-diversity results, paired alpha-diversity analysis and targeted clinical ARG analysis.
 
-The revised interpretation distinguished consistently between:
+### Revised argument
 
-- relative and absolute abundance;
-- association and causation;
-- directional coefficients and statistically significant associations;
-- visual separation in an ordination and a farm-adjusted statistical effect.
+The final Discussion was organised around the following interpretation:
 
-### Structure
-
-The Discussion was organised around the following argument:
-
-1. Healthy and sick corrals shared a similar broad class-level resistome.
-2. The unadjusted ordinations showed partial separation, but this did not persist after farm was included in the models.
+1. Healthy and sick corrals shared the main resistance-class background.
+2. The unadjusted ordinations showed partial separation that did not persist after farm was considered.
 3. Alpha diversity did not differ consistently between corral types.
-4. No individual resistance category remained significantly associated with corral type after correction.
-5. Clinically relevant low-abundance ARG families were present in both corral types but could not be interpreted as evidence of transmission or mobilisation.
-6. The cross-sectional and unbalanced study design limited causal and farm-independent interpretation.
+4. No individual resistance class remained significantly associated with corral type after correction.
+5. Selected clinically relevant ARG families occurred at low relative abundance and were not confined to sick corrals.
+6. The cross-sectional, unbalanced sampling design limited causal and farm-independent interpretation.
 
 ### Outcome
 
-The revised Discussion no longer treated the original unrestricted PERMANOVA or directional class-level coefficients as confirmed corral-type effects. Farm-level heterogeneity and the limits of the available sampling design were incorporated throughout the interpretation.
+I removed wording that treated the results as confirmed differences between corral types. The revised text separated directional patterns from statistically significant results and clearly identified the unadjusted analyses.
 
-
-## 2026-07-18 to 2026-07-19 - Supervisor review and final language revision
+## 2026-07-18 to 2026-07-19 - Supervisor review and final Discussion revision
 
 ### Supervisor assessment
 
-The supervisor considered the revised Discussion substantially improved. He specifically noted that the distinctions between relative and absolute abundance, association and causation, and directional and significant findings were applied consistently.
+The supervisor considered the revised Discussion substantially improved. He noted that the distinctions between relative and absolute abundance, association and causation, and directional and statistically significant findings were applied consistently.
 
-He also approved the explanation that the proportion of variation attributed to farm in the sequential PERMANOVA depended on term order and could not be interpreted causally. The inclusion of PERMDISP and the transparent reporting of multiple-testing correction were also identified as strengths.
+He specifically noted that the caveat about term order in the sequential PERMANOVA was appropriate and that the farm percentage should not be interpreted causally.
 
 ### Remaining revisions
 
-The remaining comments concerned writing and presentation rather than the analytical framework. These included:
+The remaining comments concerned writing and presentation:
 
-- removing repeated hedging within the same sentence;
-- standardising the use and hyphenation of terms relating to resistance classes;
-- replacing vague ordination language such as “appeared to separate”;
-- varying sentence openings when discussing previous studies;
-- defining abbreviations at first use;
-- standardising statistical formatting;
-- splitting several long sentences.
+- remove repeated hedging within the same sentence;
+- standardise resistance-class terminology and hyphenation;
+- replace vague ordination wording with direct descriptions;
+- vary sentence openings when comparing previous studies;
+- define MLS and the TELSeq relationship at first use;
+- standardise ARG-family names and statistical notation;
+- divide several long statistical sentences.
 
 ### Changes made
 
-I edited the Discussion to remove duplicated qualifications while retaining appropriate scientific caution. Terminology and hyphenation were reviewed across all sections, vague ordination descriptions were replaced with more direct language, and long statistical sentences were divided where necessary.
+I removed repeated hedging but kept the limitations that were necessary for interpreting the results. Terminology, hyphenation, abbreviation definitions and statistical formatting were checked across the manuscript. Vague ordination wording was replaced with direct descriptions of what was shown and whether the pattern persisted after farm adjustment.
 
-The first mentions of abbreviations and ARG-family names were checked for consistency. Statistical notation, including R², F, p and adjusted p-values, was also reviewed.
+### Outcome
 
-### Reflection
+After I addressed the remaining comments, the main conclusion did not change. The remaining work focused mainly on wording, formatting and submission preparation.
 
-The supervisor feedback indicated that the scientific interpretation was now consistent and appropriately cautious. The final stage of revision therefore focused on improving readability and journal-style presentation rather than changing the conclusions.
+## 2026-07-20 to 2026-07-22 - Completion of Methods, Results, abstract and references
 
-### Current status
+### Objective
 
-The Discussion has been revised in response to both the statistical reassessment and supervisor feedback. The next stage is to integrate the final Results figures, complete the remaining dissertation sections and carry out a full consistency and formatting check before submission.
+To align every dissertation section with the final scripts and statistical outputs.
+
+### Methods and Results checks
+
+I checked that:
+
+- the sample numbers were reported consistently as 33 samples from 26 farms;
+- healthy and sick group sizes were reported as 25 and eight;
+- the seven paired farms were described correctly;
+- Bray-Curtis and CLR/Aitchison models were distinguished;
+- unrestricted, restricted and sequential PERMANOVA results were not mixed;
+- the final Hill-number p-values matched the exported tables;
+- all MaAsLin2 findings were described as non-significant after correction;
+- the targeted ARG analysis stated that SNP-confirmation-dependent assignments were excluded.
+
+### Abstract
+
+I revised the abstract to report the study design, the main adjusted results and the low-abundance ARG finding. I left out most secondary statistical values so that the main conclusion remained clear. The conclusion emphasised farm-level heterogeneity rather than a consistent healthy-sick corral effect.
+
+### Title and keywords
+
+The title was revised to use "antimicrobial resistance gene families" because RPH, ARR, IMP, SPM and KHM were analysed as families. The keyword list was shortened to retain only terms central to the study.
+
+### References
+
+I checked that every in-text citation appeared in the reference list and standardised the reference formatting. Package references for `vegan`, `zCompositions`, `compositions`, MaAsLin2, `patchwork`, `tidyverse` and R were retained where the corresponding methods were used.
+
+### Outcome
+
+After this check, the Methods, Results, abstract and references matched the final scripts and exported results.
+
+## 2026-07-23 to 2026-07-26 - Submission-format and documentation checks
+
+### Objective
+
+To prepare the dissertation document for submission and check it against the course requirements.
+
+### Work completed
+
+I:
+
+- added the required dissertation cover page;
+- added the student declaration;
+- checked the abstract and main-text word counts;
+- confirmed that the five dissertation figures were within the maximum allowance of six figures;
+- added page numbers;
+- inserted the final GitHub repository URL in the reproducibility section;
+- finalised the acknowledgements;
+- checked heading, figure-caption and reference formatting.
+
+### Data and supervision wording
+
+The acknowledgements were revised to state that Dr Adam Blanchard provided the dataset and study metadata and gave guidance on the research question, analytical approach, interpretation, figures and Discussion. The contributions of the project team to sample collection, DNA extraction, target-enriched long-read sequencing and initial TELCoMB processing were also acknowledged.
+
+### Outcome
+
+The cover page, declaration and main dissertation sections were prepared for the final PDF export.
+
+## 2026-07-27 - Making the scripts portable
+
+### Objective
+
+To remove computer-specific paths so that the scripts could be run from the repository root.
+
+### Changes
+
+Across scripts `01` to `09`, I:
+
+- replaced the local absolute project path with `project_dir <- getwd()`;
+- defined `data/`, `data/raw/`, `figures/`, `results/` and `scripts/` using relative paths;
+- added directory creation where scripts generated figures or results;
+- corrected output descriptions and filenames;
+- removed a duplicated `source()` call from the Hill-number figure-combination script;
+- removed an early duplicate zero-replacement call from the CLR script;
+- checked that the scripts were intended to run in numerical order from the repository root.
+
+### Troubleshooting
+
+When the scripts were run while the R working directory was a general Documents folder, R searched for `data/` beneath that folder and reported that input or output paths did not exist. This was a working-directory and local folder-structure issue introduced during the portability check, not a change to the analytical methods or previously generated results.
+
+Running the workflow requires the repository root to be the working directory and the authorised input files to be placed in `data/raw/`. Because those inputs are restricted, a fresh public clone cannot reproduce the numerical outputs without access from the project team.
+
+### Outcome
+
+The scripts now use the same relative folder structure and no longer contain the original `E:/` path. 
+
+## 2026-07-28 - README, repository review and final status
+
+### Objective
+
+To finish the README and document the workflow without uploading the restricted project data.
+
+### README contents
+
+I added a root `README.md` describing:
+
+- the research question and analysis overview;
+- the required input file types and expected filenames;
+- the 34 TELCoMB feature reports representing 33 farm samples and one pristine-soil control;
+- the study-design metadata workbook;
+- the restriction on public release of the input data and metadata;
+- the repository structure;
+- R and package versions;
+- package installation requirements;
+- the numerical order and purpose of scripts `01` to `09`;
+- the expected figures and statistical outputs;
+- the code provenance and supervisor-recommended methodological resources.
+
+### Public data decision
+
+Following the supervisor's instruction, the TELCoMB feature reports, metadata workbook and derived processed data were not uploaded to GitHub. The repository explains that authorised users must place the required inputs in `data/raw/` before running the workflow.
+
+### Repository check
+
+I checked that:
+
+- no restricted raw data or metadata were staged for public upload;
+- no local absolute paths remained in the analysis scripts;
+- the README and research log matched the final workflow;
+- the figure and script names used in the documentation matched the repository;
+- the final analytical conclusions matched the dissertation.
+
+### Final status
+
+The analysis, figures, statistical results, README and research log are complete. I still need to commit and push the latest documentation changes, check that the README displays correctly on GitHub, and export the dissertation as a PDF. I will then check the final PDF for formatting problems, including the cover page, declaration, page numbers, figures, references and repository link.
